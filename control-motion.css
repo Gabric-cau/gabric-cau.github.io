@@ -1,0 +1,120 @@
+#motion-lab.pm-root {
+  display: block;
+  min-width: 0;
+  background: #09291f;
+  color: #f5f7f2;
+  border: 1px solid #2e493e;
+  overflow: hidden;
+  letter-spacing: 0;
+}
+#motion-lab.pm-root *, #motion-lab.pm-root *::before, #motion-lab.pm-root *::after { box-sizing: border-box; }
+#motion-lab .pm-tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #3e564b; }
+#motion-lab button { font: inherit; cursor: pointer; }
+#motion-lab button:focus-visible, #motion-lab input:focus-visible { outline: 2px solid #93cdeb; outline-offset: 4px; }
+#motion-lab .pm-tabs button { min-height: 66px; padding: 16px 24px; border: 0; border-right: 1px solid #3e564b; color: #c3cec7; background: transparent; text-align: left; font-size: 19px; font-weight: 650; }
+#motion-lab .pm-tabs button:last-child { border-right: 0; }
+#motion-lab .pm-tabs button span { margin-right: 20px; font: 12px monospace; color: #ff927d; }
+#motion-lab .pm-tabs button[aria-pressed="true"] { color: #09291f; background: #d9f46a; }
+#motion-lab .pm-tabs button[aria-pressed="true"] span { color: #3d4d1b; }
+#motion-lab .pm-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(285px, 28%); align-items: stretch; }
+#motion-lab .pm-visual { min-width: 0; }
+#motion-lab .pm-options { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 18px 24px 10px; min-height: 62px; }
+#motion-lab .pm-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+#motion-lab .pm-legend label { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; font-size: 14px; color: #e6ece8; }
+#motion-lab .pm-legend output { min-width: 53px; font: 11px monospace; color: #acbdb5; }
+#motion-lab .pm-legend label:has([data-pm-layer="zone"]) i { background: repeating-linear-gradient(to right, #edca7e 0 6px, transparent 6px 9px); }
+#motion-lab .pm-legend input { appearance: none; position: absolute; width: 1px; height: 1px; opacity: 0; }
+#motion-lab .pm-legend i, #motion-lab .pm-queue-key i { display: inline-block; width: 21px; height: 3px; background: var(--pm-swatch); }
+#motion-lab .pm-legend input:not(:checked) ~ i { opacity: .25; }
+#motion-lab .pm-legend label:has(input:not(:checked)) { opacity: .55; }
+#motion-lab .pm-legend label:has(input:focus-visible) { outline: 2px solid #93cdeb; outline-offset: 5px; }
+#motion-lab .pm-view, #motion-lab .pm-mode { display: inline-flex; border: 1px solid #466152; }
+#motion-lab .pm-view button, #motion-lab .pm-mode button { color: #bbc9c1; background: transparent; padding: 8px 11px; font-size: 13px; border: 0; min-height: 36px; }
+#motion-lab .pm-view button[aria-pressed="true"], #motion-lab .pm-mode button[aria-pressed="true"] { color: #09291f; background: #d9f46a; }
+#motion-lab .pm-canvas { display: block; width: 100%; max-width: 100%; height: 510px; }
+#motion-lab .pm-aside { border-left: 1px solid #3e564b; padding: 28px 28px 24px; min-width: 0; background: #0d3025; }
+#motion-lab .pm-eyebrow { margin: 0 0 16px; color: #d9f46a; font: 12px/1.5 monospace; }
+#motion-lab .pm-aside h3, #motion-lab .pm-field h3 { margin: 0 0 20px; font-size: 27px; line-height: 1.35; color: #f5f7f2; font-weight: 650; text-wrap: balance; }
+#motion-lab .pm-aside > p:not(.pm-eyebrow), #motion-lab .pm-field figcaption > p:not(.pm-eyebrow) { margin: 0 0 22px; color: #c0cec4; font-size: 17px; line-height: 1.85; text-wrap: balance; }
+#motion-lab .pm-mode { display: flex; margin: 24px 0 18px; }
+#motion-lab .pm-mode button { flex: 1; min-height: 42px; font-size: 15px; }
+#motion-lab .pm-mode [data-pm-mode="zone"][aria-pressed="true"] { background: #edca7e; }
+#motion-lab .pm-comparison { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid #3e564b; }
+#motion-lab .pm-comparison > p { margin: 0 0 12px; color: #acbdb5; font-size: 14px; line-height: 1.7; }
+#motion-lab .pm-comparison > div { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-bottom: 16px; }
+#motion-lab .pm-comparison span { display: flex; align-items: baseline; gap: 9px; font: 13px monospace; color: #d9f46a; }
+#motion-lab .pm-comparison span:last-child { color: #edca7e; }
+#motion-lab .pm-comparison output { font: 600 16px monospace; white-space: nowrap; }
+#motion-lab .pm-parameter { display: block; margin: 24px 0 20px; }
+#motion-lab .pm-parameter > span { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 12px; font-size: 14px; color: #e2ebe4; }
+#motion-lab .pm-parameter output { font-family: monospace; color: #d9f46a; white-space: nowrap; }
+#motion-lab input[type="range"] { display: block; width: 100%; margin: 0; accent-color: #d9f46a; cursor: pointer; }
+#motion-lab[data-motion-mode="zone"] [data-pm-input="radius"] { accent-color: #edca7e; }
+#motion-lab[data-motion-mode="zone"] [data-pm-readout="radius"] { color: #edca7e; }
+#motion-lab .pm-aside > p.pm-detail { font-size: 15px; line-height: 1.85; color: #aebbaf; }
+#motion-lab .pm-aside > p.pm-limit { padding-left: 16px; border-left: 2px solid #edca7e; font-size: 15px; color: #dedac7; }
+#motion-lab .pm-stats { display: flex; flex-direction: column; margin: 24px 0 0; }
+#motion-lab .pm-stats > div { display: flex; justify-content: space-between; gap: 15px; padding: 14px 0; border-top: 1px solid #3e564b; }
+#motion-lab .pm-stats dt { color: #acbdb5; font-size: 14px; }
+#motion-lab .pm-stats dd { margin: 0; color: #f5f7f2; font: 600 16px/1.5 monospace; white-space: nowrap; }
+#motion-lab .pm-playback { display: flex; gap: 8px; align-items: center; min-width: 0; padding: 16px 24px; border-top: 1px solid #2e493e; }
+#motion-lab .pm-icon { display: inline-flex; width: 42px; min-width: 42px; height: 42px; align-items: center; justify-content: center; border: 1px solid #496354; background: transparent; color: #f5f7f2; font-size: 18px; }
+#motion-lab .pm-icon:first-child { background: #d9f46a; border-color: #d9f46a; color: #09291f; }
+#motion-lab .pm-icon:hover { background: #284e3c; }
+#motion-lab .pm-icon:first-child:hover { background: #e8ff94; }
+#motion-lab .pm-scrub { flex: 1; min-width: 40px; margin: 0 10px; }
+#motion-lab .pm-scrub span { display: block; margin: 0 0 8px; font-size: 12px; color: #acbdb5; }
+#motion-lab .pm-playback > output { min-width: 58px; text-align: right; font: 14px monospace; color: #d9f46a; }
+#motion-lab .pm-source { margin: 0; padding: 0 24px 20px; color: #95aa9d; font-size: 12px; line-height: 1.7; }
+#motion-lab .pm-source button { color: #d9f46a; border: 0; background: transparent; text-decoration: underline; }
+#motion-lab .pm-queue-key { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; padding: 20px 24px 12px; }
+#motion-lab .pm-queue-key span { display: inline-flex; gap: 8px; align-items: center; color: #d6e2d8; font-size: 13px; }
+#motion-lab .pm-queue-key b { margin-left: auto; color: #aebbaf; font-size: 12px; font-weight: 400; }
+#motion-lab .pm-field { display: grid; grid-template-columns: minmax(0, 38%) minmax(0, 1fr); margin: 0; padding: 30px; gap: 36px; align-items: center; border-top: 1px solid #3e564b; background: #f1f4ee; }
+#motion-lab .pm-field video { display: block; width: 100%; height: auto; aspect-ratio: 960 / 544; object-fit: contain; background: #101913; }
+#motion-lab .pm-field figcaption { padding: 4px 20px 4px 0; }
+#motion-lab .pm-field .pm-eyebrow { color: #b04d37; }
+#motion-lab .pm-field h3 { color: #14291f; margin-bottom: 14px; }
+#motion-lab .pm-field figcaption > p:not(.pm-eyebrow) { color: #526557; margin-bottom: 16px; }
+#motion-lab .pm-field-note { color: #587060; font-size: 12px; }
+@media (max-width: 1100px) {
+  #motion-lab .pm-workspace { grid-template-columns: minmax(0, 1fr) 285px; }
+  #motion-lab .pm-aside { padding: 24px 20px; }
+  #motion-lab .pm-options { padding: 16px 20px 10px; }
+  #motion-lab .pm-legend { gap: 12px; }
+  #motion-lab .pm-legend label { font-size: 13px; }
+}
+@media (min-width: 851px) and (max-width: 1100px) {
+  html[data-language="zh"] #motion-lab[data-motion-view="queue"] .pm-workspace { grid-template-columns: minmax(0, 1fr) 300px; }
+}
+@media (max-width: 850px) {
+  #motion-lab .pm-workspace { grid-template-columns: minmax(0, 1fr); }
+  #motion-lab .pm-aside { border-left: 0; border-top: 1px solid #3e564b; padding: 24px; }
+  #motion-lab .pm-aside h3 { font-size: 25px; }
+  #motion-lab .pm-stats { flex-direction: row; gap: 24px; }
+  #motion-lab .pm-stats > div { flex: 1; flex-direction: column; gap: 6px; }
+  #motion-lab .pm-field { gap: 24px; padding: 24px; }
+  #motion-lab .pm-field h3 { font-size: 24px; }
+  #motion-lab .pm-field figcaption { padding: 0; }
+}
+@media (max-width: 560px) {
+  #motion-lab .pm-tabs button { padding: 14px 16px; font-size: 16px; line-height: 1.45; min-height: 74px; }
+  #motion-lab .pm-tabs button span { display: block; margin: 0 0 5px; }
+  #motion-lab .pm-options { padding: 16px 18px 6px; gap: 14px; }
+  #motion-lab .pm-legend { gap: 10px 15px; }
+  #motion-lab .pm-view { margin-left: auto; }
+  #motion-lab .pm-playback { padding: 14px 16px; gap: 6px; }
+  #motion-lab .pm-icon { width: 36px; min-width: 36px; height: 40px; }
+  #motion-lab .pm-scrub { margin: 0 2px 0 5px; }
+  #motion-lab .pm-scrub span { font-size: 11px; }
+  #motion-lab .pm-playback > output { min-width: 46px; font-size: 12px; }
+  #motion-lab .pm-source { padding: 0 18px 18px; font-size: 12px; }
+  #motion-lab .pm-aside { padding: 24px 20px; }
+  #motion-lab .pm-aside > p:not(.pm-eyebrow) { font-size: 16px; }
+  #motion-lab .pm-queue-key { padding: 18px 18px 10px; gap: 14px; }
+  #motion-lab .pm-queue-key b { width: 100%; margin-left: 0; }
+  #motion-lab .pm-field { display: block; padding: 20px; }
+  #motion-lab .pm-field figcaption { padding-top: 24px; }
+  #motion-lab .pm-field h3 { font-size: 24px; }
+  #motion-lab .pm-field figcaption > p:not(.pm-eyebrow) { font-size: 16px; }
+}

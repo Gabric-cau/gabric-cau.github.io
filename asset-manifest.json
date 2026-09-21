@@ -1,32 +1,32 @@
 {
-  "generatedAt": "2026-09-20T13:00:15.903Z",
+  "generatedAt": "2026-09-21T15:58:49.267Z",
   "fileCount": 183,
-  "totalBytes": 141454875,
+  "totalBytes": 141462794,
   "files": [
     {
       "path": "index.html",
-      "bytes": 45940,
-      "sha256": "58668ded8af0e7d83420d0c54f18e8c485c02763d71aaafac4906b3814dff54e"
+      "bytes": 47942,
+      "sha256": "7687f7417af8102022872ff1fd646cb232347b94ff2d683a9a24b7cdbb69dc60"
     },
     {
       "path": "content-v6.js",
-      "bytes": 52195,
-      "sha256": "015de301a5ca115f4f599caf0b3829fe1f55323b6c7f42ab94b4ade6810eb089"
+      "bytes": 52242,
+      "sha256": "eb809a19dbb5cd69884944dad860964aa55be5b929ec2baca14a7fef6d997529"
     },
     {
       "path": "script-v6.js",
-      "bytes": 45927,
-      "sha256": "becae9ae78acb4ebf2842db020def518356734eb35b820f6ae44182f5f5c2801"
+      "bytes": 49469,
+      "sha256": "08ef9defb0adc32323543aca578a296dc85d5a87395048d9a2579c9efe9f33ee"
     },
     {
       "path": "styles-v6.css",
-      "bytes": 207175,
-      "sha256": "04ad842de860dd14af870e20b082403013c6b255fb41e7fa5d008fed14a13d80"
+      "bytes": 208662,
+      "sha256": "fa9b13e4c6d63bd1f141d4e8e43a2d7feca52f1692d0073b102ffdfd67c97e72"
     },
     {
       "path": "homepage-v11.css",
-      "bytes": 58433,
-      "sha256": "5bd52e2ca59b39a6158854e332ad6ce9119a411bbb5aa21f9650838a0176924a"
+      "bytes": 59274,
+      "sha256": "c65d6dd730c0f36052838f54553231710a7512389ea76632f2b064b58522be79"
     },
     {
       "path": "fonts.css",

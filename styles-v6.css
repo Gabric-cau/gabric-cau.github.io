@@ -4252,3 +4252,45 @@ html[data-language="en"] .home-view .projects-section .work-row.work-row--compac
 .menu-preview.is-text-preview figcaption { inset: 0; align-content: center; padding: 32px; }
 .ego-roles .infra-path { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 760px) { .ego-roles .infra-path { grid-template-columns: 1fr; } }
+.drawry-hero h1 > b { font-weight: inherit; }
+
+/* Text links stay identifiable before hover without changing their layout. */
+.header-actions > a::after { content: none; }
+.header-actions > a,
+.language-toggle,
+.menu-toggle > span,
+.menu-project > span,
+.menu-inner > footer a,
+.text-link > span,
+.now-link > span,
+.project-back > span,
+.next-project > b,
+.contact nav a,
+.contact > footer a,
+.control-chapter-nav a > b,
+.force-story__source a,
+.a3u-secondary-evidence > span {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+  text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: auto;
+}
+.header-actions > a:is(:hover, :focus-visible),
+.language-toggle:is(:hover, :focus-visible),
+.menu-toggle:is(:hover, :focus-visible) > span,
+.menu-project:is(:hover, :focus-visible) > span,
+.menu-inner > footer a:is(:hover, :focus-visible),
+.text-link:is(:hover, :focus-visible) > span,
+.now-link:is(:hover, :focus-visible) > span,
+.project-back:is(:hover, :focus-visible) > span,
+.next-project:is(:hover, :focus-visible) > b,
+.contact nav a:is(:hover, :focus-visible),
+.contact > footer a:is(:hover, :focus-visible),
+.control-chapter-nav a:is(:hover, :focus-visible) > b,
+.force-story__source a:is(:hover, :focus-visible),
+.a3u-secondary-evidence:is(:hover, :focus-visible) > span {
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
+}

@@ -1277,9 +1277,15 @@ html[data-language="en"] .home-view .contact > div h2 {
 /* Homepage refinement: current work cards and the compact selected-work index. */
 .home-view .now-grid article.now-card {
   position: relative;
+  grid-template-columns: minmax(0, 1fr);
   cursor: pointer;
   transition: background .28s ease, color .28s ease, box-shadow .28s ease;
 }
+
+.home-view .now-grid article.now-card > h3,
+.home-view .now-grid article.now-card > .now-copy,
+.home-view .now-grid article.now-card > small { grid-column: 1; }
+.home-view .now-grid article.now-card > small { padding-right: 120px; }
 
 .home-view .now-grid article.now-card:hover,
 .home-view .now-grid article.now-card:focus-visible {
@@ -1906,4 +1912,19 @@ html[data-language="zh"] .home-view .projects-heading > p:last-child { max-width
   .home-view .projects-section .work-row.work-row--compact .work-summary { grid-row: 2; }
   .home-view .projects-section .work-row.work-row--compact .work-row-preview { grid-row: 3; }
   .home-view .projects-section .work-row.work-row--compact .work-open { grid-row: 4; }
+}
+
+.home-view .now-card .now-open > span,
+.home-view .projects-section .work-open > span {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+  text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: auto;
+}
+.home-view .now-card:is(:hover, :focus-visible) .now-open > span,
+.home-view .projects-section .work-row:is(:hover, :focus-visible) .work-open > span {
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
 }

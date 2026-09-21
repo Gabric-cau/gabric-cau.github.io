@@ -18,7 +18,11 @@
   const storedLanguage = (() => {
     const query = new URLSearchParams(location.search).get("lang");
     if (query === "zh" || query === "en") return query;
-    try { return localStorage.getItem("portfolio-language") || "zh"; } catch { return "zh"; }
+    try {
+      const stored = localStorage.getItem("portfolio-language");
+      if (stored === "zh" || stored === "en") return stored;
+    } catch {}
+    return "en";
   })();
 
   const state = {
@@ -653,18 +657,32 @@
     $("#drawry-stage-copy").textContent=item.copy||"Upload or capture the drawing and keep the source image.";
     $("#drawry-stage-output").textContent=item.output||"OUTPUT · ORIGINAL DRAWING";
     const src="assets/media/drawry-source-drawing.jpg",flow="assets/media/drawry-product-flow.png",poster="assets/media/drawry-prototype-poster.png",story1="assets/media/drawry-story-frame-01.jpg",story2="assets/media/drawry-story-frame-02.jpg",story3="assets/media/drawry-story-frame-03.jpg",story4="assets/media/drawry-story-frame-04.jpg";
-    const phone={
+    const phoneZh={
       upload:`<div class="phone-ui"><div class="appbar"><i>小绘书✎</i><span>···</span></div><div class="phone-card"><img src="${src}" alt=""><h4>上传一幅画</h4><p>保留孩子原本的笔触，确认方向与裁切。</p><div class="primary">＋ 选择画作</div></div></div>`,
       understand:`<div class="phone-ui"><div class="appbar"><i>故事素材</i><span>2/4</span></div><div class="phone-card"><img src="${src}" alt=""><h4>画面里有什么</h4><div class="tag-row"><span>孩子</span><span>太阳</span><span>户外</span><span>快乐</span><span>冒险</span></div><p>这些线索会成为故事生成的输入。</p><div class="primary">使用这些故事素材</div></div></div>`,
       story:`<div class="phone-ui"><div class="appbar"><i>晴天小欢喜</i><span>3/4</span></div><div class="phone-card"><img src="${story3}" alt="生成故事短片中的第三个画面"><h4>第 3 幕 · 发现</h4><p>角色沿着阳光继续向前，原画里的线索被展开成连续情节。</p><div class="story-list"><div><img src="${story1}" alt="故事短片的第一个画面"><span>第 1 幕 · 看见太阳</span></div><div><img src="${story2}" alt="故事短片的第二个画面"><span>第 2 幕 · 向上触碰</span></div></div></div></div>`,
       family:`<div class="phone-ui"><div class="appbar"><i>安安的小绘书屋</i><span>⌂</span></div><div class="phone-card"><h4>孩子空间</h4><div class="story-list"><div><img src="${poster}" alt="晴天小欢喜故事封面"><span>最近生成 · 晴天小欢喜</span></div><div><img src="${src}" alt="孩子上传的原始画作"><span>原始画作 · 已归档</span></div></div><div class="family-actions"><span>我的画册</span><span>收藏故事</span><span>生成记录</span></div></div></div>`,
     };
-    const desktop={
+    const desktopZh={
       upload:`<figure class="drawry-art main"><img src="${src}" alt="Original child drawing"></figure><figure class="drawry-art secondary"><img src="${flow}" alt="Drawry product flow"></figure>`,
       understand:`<div class="drawry-board"><h4>从像素到故事要素</h4><div class="chips"><span>CHARACTER · CHILD</span><span>OBJECT · SUN</span><span>SCENE · OUTDOOR</span><span>MOOD · JOYFUL</span><span>THEME · DISCOVERY</span></div><img src="${flow}" alt="Product flow" style="width:72%;margin:35px auto 0"></div>`,
       story:`<div class="drawry-board"><h4>公开原型生成短片里的四个时刻</h4><div class="story-panels"><figure><img src="${story1}" alt="故事短片中孩子看向太阳"><figcaption>01 · 看见太阳</figcaption></figure><figure><img src="${story2}" alt="故事短片中孩子伸手触碰"><figcaption>02 · 伸手触碰</figcaption></figure><figure><img src="${story3}" alt="故事短片中的转场"><figcaption>03 · 情节转场</figcaption></figure><figure><img src="${story4}" alt="故事短片中的森林场景"><figcaption>04 · 走进森林</figcaption></figure></div></div>`,
       family:`<div class="family-board"><div class="family-profile"><img src="${src}" alt="孩子上传的原始画作"><div><h4>安安的小绘书屋</h4><p>孩子 · 画作 · 故事 · 共读</p></div></div><div class="family-albums"><article><img src="${poster}" alt="晴天小欢喜故事封面"><b>晴天小欢喜</b></article><article><img src="${story4}" alt="生成故事中的森林画面"><b>我们的故事旅程</b></article></div></div>`,
     };
+    const phoneEn={
+      upload:`<div class="phone-ui"><div class="appbar"><i>Drawry✎</i><span>···</span></div><div class="phone-card"><img src="${src}" alt=""><h4>Upload a drawing</h4><p>Keep the original strokes, then check orientation and crop.</p><div class="primary">＋ Choose a drawing</div></div></div>`,
+      understand:`<div class="phone-ui"><div class="appbar"><i>Story elements</i><span>2/4</span></div><div class="phone-card"><img src="${src}" alt=""><h4>What's in the picture</h4><div class="tag-row"><span>Child</span><span>Sun</span><span>Outdoors</span><span>Joy</span><span>Adventure</span></div><p>These clues become the starting point for the story.</p><div class="primary">Use these story elements</div></div></div>`,
+      story:`<div class="phone-ui"><div class="appbar"><i>A Little Sunshine</i><span>3/4</span></div><div class="phone-card"><img src="${story3}" alt="Third frame from the generated story video"><h4>Scene 3 · Discovery</h4><p>The character follows the sunshine as clues from the drawing unfold into a story.</p><div class="story-list"><div><img src="${story1}" alt="First frame from the story video"><span>Scene 1 · Seeing the sun</span></div><div><img src="${story2}" alt="Second frame from the story video"><span>Scene 2 · Reaching up</span></div></div></div></div>`,
+      family:`<div class="phone-ui"><div class="appbar"><i>An'an's Drawry</i><span>⌂</span></div><div class="phone-card"><h4>Child's space</h4><div class="story-list"><div><img src="${poster}" alt="A Little Sunshine story cover"><span>Latest · A Little Sunshine</span></div><div><img src="${src}" alt="Original drawing uploaded by the child"><span>Original drawing · Saved</span></div></div><div class="family-actions"><span>My drawings</span><span>Saved stories</span><span>History</span></div></div></div>`,
+    };
+    const desktopEn={
+      upload:desktopZh.upload,
+      understand:`<div class="drawry-board"><h4>From pixels to story elements</h4><div class="chips"><span>CHARACTER · CHILD</span><span>OBJECT · SUN</span><span>SCENE · OUTDOOR</span><span>MOOD · JOYFUL</span><span>THEME · DISCOVERY</span></div><img src="${flow}" alt="Product flow" style="width:72%;margin:35px auto 0"></div>`,
+      story:`<div class="drawry-board"><h4>Four moments from the prototype's story video</h4><div class="story-panels"><figure><img src="${story1}" alt="The child looks at the sun in the story video"><figcaption>01 · Seeing the sun</figcaption></figure><figure><img src="${story2}" alt="The child reaches up in the story video"><figcaption>02 · Reaching up</figcaption></figure><figure><img src="${story3}" alt="A transition in the story video"><figcaption>03 · A new scene</figcaption></figure><figure><img src="${story4}" alt="A forest scene in the story video"><figcaption>04 · Into the forest</figcaption></figure></div></div>`,
+      family:`<div class="family-board"><div class="family-profile"><img src="${src}" alt="Original drawing uploaded by the child"><div><h4>An'an's Drawry</h4><p>Child · Drawings · Stories · Shared reading</p></div></div><div class="family-albums"><article><img src="${poster}" alt="A Little Sunshine story cover"><b>A Little Sunshine</b></article><article><img src="${story4}" alt="A forest scene from the generated story"><b>Our story journey</b></article></div></div>`,
+    };
+    const phone=state.language==="zh"?phoneZh:phoneEn;
+    const desktop=state.language==="zh"?desktopZh:desktopEn;
     const phoneMarkup=phone[selected]||phone.upload;
     const desktopMarkup=desktop[selected]||desktop.upload;
     $("#drawry-phone-screen").innerHTML=phoneMarkup;

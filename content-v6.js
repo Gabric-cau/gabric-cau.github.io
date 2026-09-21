@@ -286,6 +286,7 @@
       forceIntro: "我在 2-DoF 主从机械臂上实现重力补偿、关节跟随与接触力反馈。用电机力矩减去模型估算的重力项，再通过迟滞判断和非对称低通抑制干扰，将接触阻力传回主臂，让操作者能感知从臂的接触变化。",
     },
     drawry: {
+      name: "小绘书",
       secondaryLabel: "我的职责",
       lead: "小绘书从孩子的一幅画出发，尝试做一款可以和家长一起读故事的产品。团队把想法做成了演示原型，我主要负责功能细化和交互逻辑，也参与页面设计与演示。",
       title: "从儿童画到故事",
@@ -563,6 +564,7 @@
       forceIntro: "I wanted the operator to feel when the follower meets resistance. On a 2-DoF setup, I implemented gravity compensation, joint following and contact torque feedback. I subtract model-estimated gravity from motor torque, then use hysteresis and an asymmetric low-pass filter to return resistance to the leader.",
     },
     drawry: {
+      name: "Drawry",
       secondaryLabel: "My role",
       lead: "I like exploring what AI can add to everyday life. Drawry turns a child's drawing into a story to read together. On the team, I refined features and interaction logic, and helped design and present the prototype for a family reading experience.",
       title: "From a child's drawing to a story",

@@ -91,7 +91,7 @@
       <ol class="ctl-teleop-flow">${t.flow.map(([title, detail], i) => `<li><span class="ctl-teleop-number">0${i + 1}</span><div><strong>${title}</strong><span>${detail}</span></div></li>`).join("")}</ol>
       <div class="ctl-teleop-body">
         <figure class="ctl-teleop-video">
-          <video id="ctl-teleop-video" src="assets/media/arm-teleop-grasp.mp4" poster="assets/media/arm-teleop-grasp-poster.jpg" controls muted playsinline preload="metadata" aria-label="${t.video}"></video>
+          <video id="ctl-teleop-video" data-src="assets/media/arm-teleop-grasp.mp4" poster="assets/media/arm-teleop-grasp-poster.jpg" controls muted playsinline preload="none" aria-label="${t.video}"></video>
           <figcaption><strong>${t.video}</strong><span>${t.videoNote}</span></figcaption>
         </figure>
         <div class="ctl-teleop-analysis">
@@ -111,6 +111,7 @@
       previousVideo.setAttribute("aria-label", t.video);
       find("#ctl-teleop-video").replaceWith(previousVideo);
     }
+    window.PortfolioMedia?.attach(host);
     bind();
     state.observer = new ResizeObserver(draw);
     state.observer.observe(find(".ctl-teleop-plot"));

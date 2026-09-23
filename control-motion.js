@@ -159,6 +159,7 @@
   function markup() {
     const t = tr();
     const active = state.tab;
+    const previousVideo = root.querySelector('.pm-field video');
     root.className = 'pm-root';
     root.dataset.motionView = active;
     root.innerHTML = `
@@ -200,9 +201,14 @@
         </aside>
       </div>
       <figure class="pm-field">
-        <video src="assets/media/servo-spline-puma-factory.mp4" poster="assets/media/servo-spline-puma-factory-poster.jpg" controls playsinline preload="metadata" aria-label="${t.fieldSource}"></video>
+        <video data-src="assets/media/servo-spline-puma-factory.mp4" poster="assets/media/servo-spline-puma-factory-poster.jpg" controls playsinline preload="none" aria-label="${t.fieldSource}"></video>
         <figcaption><p class="pm-eyebrow">${t.fieldLabel}</p><h3>${t.fieldTitle}</h3><p>${t.fieldCopy}</p><span class="pm-field-note">${t.fieldSource}</span></figcaption>
       </figure>`;
+    if (previousVideo) {
+      previousVideo.setAttribute('aria-label', t.fieldSource);
+      root.querySelector('.pm-field video').replaceWith(previousVideo);
+    }
+    global.PortfolioMedia?.attach(root);
     canvas = root.querySelector('canvas');
     attachEvents();
     resizeObserver?.disconnect();

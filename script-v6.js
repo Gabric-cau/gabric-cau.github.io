@@ -60,6 +60,11 @@
     });
     document.documentElement.lang = state.language === "zh" ? "zh-CN" : "en";
     document.documentElement.dataset.language = state.language;
+    $$('a[href^="resume.html"]').forEach(link => {
+      const url = new URL(link.getAttribute("href"), location.href);
+      url.searchParams.set("lang", state.language);
+      link.setAttribute("href", `resume.html${url.search}${url.hash}`);
+    });
     $("#hero-title")?.setAttribute("aria-label", copy().hero.titleText);
     $("#menu-panel")?.setAttribute("aria-label", state.language === "zh" ? "项目导航" : "Project navigation");
     $("#language-toggle")?.setAttribute("aria-label", state.language === "zh" ? "Switch to English" : "切换到中文");
@@ -71,6 +76,7 @@
     updateVideoControl($("#path-origin-video"), $("#path-origin-play"));
     $(".hero-scroll")?.setAttribute("aria-label", state.language === "zh" ? "滚动到近期工作" : "Scroll to current work");
     updateSyncControl();
+    window.PortfolioMedia?.localize();
   }
 
   function setLanguage(language) {
@@ -92,14 +98,14 @@
 
   function setVideo(video, src, poster = "") {
     if (!video) return;
-    if (!video.src.endsWith(src)) video.src = src;
-    if (poster) video.poster = poster;
+    window.PortfolioMedia?.setSource(video, src, poster);
     video.muted = true;
     video.playsInline = true;
   }
 
   function playQuiet(video) {
     if (!video || reduceMotion || saveData) return;
+    window.PortfolioMedia?.hydrate(video);
     video.play().catch(() => {});
   }
 
@@ -116,38 +122,10 @@
     ["play", "pause", "ended"].forEach((eventName) => video.addEventListener(eventName, () => updateVideoControl(video, button)));
     button.addEventListener("click", async () => {
       if (!video.paused) { video.pause(); return; }
+      window.PortfolioMedia?.hydrate(video);
       try { await video.play(); } catch { updateVideoControl(video, button); }
     });
     updateVideoControl(video, button);
-  }
-
-  function bindMirroredVideo(primary, mirror) {
-    if (!primary || !mirror || mirror.dataset.videoMirrorBound) return;
-    mirror.dataset.videoMirrorBound = "true";
-
-    const align = () => {
-      if (primary.readyState < 1 || mirror.readyState < 1) return;
-      if (Math.abs(mirror.currentTime - primary.currentTime) > .08) {
-        try { mirror.currentTime = primary.currentTime; } catch {}
-      }
-      mirror.playbackRate = primary.playbackRate;
-    };
-    const playMirror = () => {
-      align();
-      mirror.play().catch(() => {});
-    };
-
-    primary.addEventListener("play", playMirror);
-    ["pause", "ended"].forEach((eventName) => primary.addEventListener(eventName, () => mirror.pause()));
-    ["seeking", "seeked", "ratechange"].forEach((eventName) => primary.addEventListener(eventName, align));
-    primary.addEventListener("timeupdate", align);
-    mirror.addEventListener("loadedmetadata", () => {
-      align();
-      if (!primary.paused) playMirror();
-    });
-
-    if (reduceMotion || saveData || primary.paused) mirror.pause();
-    else playMirror();
   }
 
   function updateSyncControl() {
@@ -203,6 +181,7 @@
         const active = !blocked && candidates.includes(row) && (touchRow === row || row.dataset.previewHover === "true" || row.contains(document.activeElement));
         if (active) {
           requested.add(video);
+          window.PortfolioMedia?.hydrate(video);
           if (video.paused) video.play().then(() => { if (!requested.has(video)) video.pause(); }).catch(() => {});
         } else video.pause();
       });
@@ -315,6 +294,9 @@
 
   function openProject(id, updateHistory = true) {
     if (!$( `[data-project-page="${id}"]`)) return;
+    window.PortfolioMedia?.close();
+    $("#hero-video")?.pause();
+    $$("#project-view video").forEach(video => video.pause());
     $("#path-origin-video")?.pause();
     if (id !== "humanoid") { pauseSync(); $("#a3u-video")?.pause(); $("#mimiclite-g1-video")?.pause(); }
     if (id !== "manipulation") pauseControlLabs();
@@ -374,6 +356,8 @@
 
   function closeProject(updateHistory = true, restoreFocus = true) {
     const view = $("#project-view");
+    window.PortfolioMedia?.close();
+    $$("#project-view video").forEach(video => video.pause());
     pauseSync();
     $("#a3u-video")?.pause();
     $("#mimiclite-g1-video")?.pause();
@@ -517,7 +501,6 @@
     if (note) note.textContent = mediaNote || meta.note?.[language] || "";
     state.a3uTimer = setTimeout(() => {
       if (!visual) return;
-      if (video) video.pause();
       if (processVisual) {
         const processLabels = Array.isArray(stage.process) && stage.process.length
           ? stage.process
@@ -552,7 +535,8 @@
         setVideo(video, meta.src || "assets/media/mimiclite-retarget-sim.mp4", meta.poster || "assets/media/mimiclite-retarget-sim-poster.jpg");
         video.setAttribute("aria-label", meta.alt || "PICO target motion and simulated policy response");
         if (state.project === "humanoid") playQuiet(video);
-      }
+      } else video?.pause();
+      window.PortfolioMedia?.attach(explorer);
       visual.dataset.mediaType = meta.type;
       media?.classList.remove("is-changing");
     }, 120);
@@ -601,11 +585,13 @@
   function syncVideos() { return [$("#sync-zed"),$("#sync-pose"),$("#sync-g1")].filter(Boolean); }
   function initSyncMedia() {
     const videos=syncVideos(); if (!videos.length) return;
-    videos.forEach((video) => { video.muted=true; video.playsInline=true;if(!video.dataset.syncBound){video.addEventListener("ended",pauseSync);video.dataset.syncBound="true";} });
+    videos.forEach((video) => { video.muted=true; video.playsInline=true;window.PortfolioMedia?.hydrate(video);if(!video.dataset.syncBound){video.addEventListener("ended",pauseSync);video.addEventListener("loadedmetadata",()=>{if(state.syncRatio!=null)setSyncRatio(state.syncRatio);updateSyncTime();});video.dataset.syncBound="true";} });
     updateSyncTime();
     updateSyncStatus();
   }
   function setSyncRatio(ratio) {
+    state.syncRatio = ratio;
+    syncVideos().forEach(video => window.PortfolioMedia?.hydrate(video));
     syncVideos().forEach((video)=>{if(Number.isFinite(video.duration)&&video.duration>0)video.currentTime=ratio*video.duration;});
     $("#sync-scrubber").value=Math.round(ratio*1000);updateSyncTime();
   }
@@ -621,19 +607,24 @@
     if(base&&base.duration){const ratio=base.currentTime/base.duration;$("#sync-scrubber").value=Math.round(ratio*1000);videos.slice(1).forEach(v=>{const target=ratio*v.duration;if(v.duration&&Math.abs(v.currentTime-target)>.06)v.currentTime=target;});updateSyncTime();}
     state.syncRaf=requestAnimationFrame(syncLoop);
   }
+  let syncPlayRequest = 0;
   async function playSync() {
+    const request = ++syncPlayRequest;
     const videos = syncVideos();
+    videos.forEach(video => window.PortfolioMedia?.hydrate(video));
     const results = await Promise.allSettled(videos.map((video) => video.play()));
+    if (request !== syncPlayRequest || window.PortfolioMedia?.isOpen || state.project !== "humanoid") return;
     if (!results.some((result) => result.status === "fulfilled")) { pauseSync(); return; }
     state.syncPlaying = true;
     updateSyncControl();
     cancelAnimationFrame(state.syncRaf);
     syncLoop();
   }
-  function pauseSync() { state.syncPlaying=false;syncVideos().forEach(v=>v?.pause());updateSyncControl();cancelAnimationFrame(state.syncRaf); }
+  function pauseSync() { syncPlayRequest++;state.syncPlaying=false;syncVideos().forEach(v=>v?.pause());updateSyncControl();cancelAnimationFrame(state.syncRaf); }
 
   function renderControlLabs() {
-    [window.PortfolioMotion, window.PortfolioTeleop, window.PortfolioForce]
+    if (state.project !== "manipulation") return;
+    [window.PortfolioMotion, window.PortfolioTeleop]
       .forEach((lab) => lab?.render(state.language));
   }
 
@@ -658,8 +649,8 @@
     $("#drawry-stage-output").textContent=item.output||"OUTPUT · ORIGINAL DRAWING";
     const src="assets/media/drawry-source-drawing.jpg",flow="assets/media/drawry-product-flow.png",poster="assets/media/drawry-prototype-poster.png",story1="assets/media/drawry-story-frame-01.jpg",story2="assets/media/drawry-story-frame-02.jpg",story3="assets/media/drawry-story-frame-03.jpg",story4="assets/media/drawry-story-frame-04.jpg";
     const phoneZh={
-      upload:`<div class="phone-ui"><div class="appbar"><i>小绘书✎</i><span>···</span></div><div class="phone-card"><img src="${src}" alt=""><h4>上传一幅画</h4><p>保留孩子原本的笔触，确认方向与裁切。</p><div class="primary">＋ 选择画作</div></div></div>`,
-      understand:`<div class="phone-ui"><div class="appbar"><i>故事素材</i><span>2/4</span></div><div class="phone-card"><img src="${src}" alt=""><h4>画面里有什么</h4><div class="tag-row"><span>孩子</span><span>太阳</span><span>户外</span><span>快乐</span><span>冒险</span></div><p>这些线索会成为故事生成的输入。</p><div class="primary">使用这些故事素材</div></div></div>`,
+      upload:`<div class="phone-ui"><div class="appbar"><i>小绘书✎</i><span>···</span></div><div class="phone-card"><img src="${src}" alt=""><h4>上传一幅画</h4><p>保留孩子原本的笔触，确认方向与裁切。</p><p class="phone-preview-status">原始画作 · 已导入</p></div></div>`,
+      understand:`<div class="phone-ui"><div class="appbar"><i>故事素材</i><span>2/4</span></div><div class="phone-card"><img src="${src}" alt=""><h4>画面里有什么</h4><div class="tag-row"><span>孩子</span><span>太阳</span><span>户外</span><span>快乐</span><span>冒险</span></div><p>这些线索会成为故事生成的输入。</p><p class="phone-preview-status">故事素材 · 已整理</p></div></div>`,
       story:`<div class="phone-ui"><div class="appbar"><i>晴天小欢喜</i><span>3/4</span></div><div class="phone-card"><img src="${story3}" alt="生成故事短片中的第三个画面"><h4>第 3 幕 · 发现</h4><p>角色沿着阳光继续向前，原画里的线索被展开成连续情节。</p><div class="story-list"><div><img src="${story1}" alt="故事短片的第一个画面"><span>第 1 幕 · 看见太阳</span></div><div><img src="${story2}" alt="故事短片的第二个画面"><span>第 2 幕 · 向上触碰</span></div></div></div></div>`,
       family:`<div class="phone-ui"><div class="appbar"><i>安安的小绘书屋</i><span>⌂</span></div><div class="phone-card"><h4>孩子空间</h4><div class="story-list"><div><img src="${poster}" alt="晴天小欢喜故事封面"><span>最近生成 · 晴天小欢喜</span></div><div><img src="${src}" alt="孩子上传的原始画作"><span>原始画作 · 已归档</span></div></div><div class="family-actions"><span>我的画册</span><span>收藏故事</span><span>生成记录</span></div></div></div>`,
     };
@@ -670,8 +661,8 @@
       family:`<div class="family-board"><div class="family-profile"><img src="${src}" alt="孩子上传的原始画作"><div><h4>安安的小绘书屋</h4><p>孩子 · 画作 · 故事 · 共读</p></div></div><div class="family-albums"><article><img src="${poster}" alt="晴天小欢喜故事封面"><b>晴天小欢喜</b></article><article><img src="${story4}" alt="生成故事中的森林画面"><b>我们的故事旅程</b></article></div></div>`,
     };
     const phoneEn={
-      upload:`<div class="phone-ui"><div class="appbar"><i>Drawry✎</i><span>···</span></div><div class="phone-card"><img src="${src}" alt=""><h4>Upload a drawing</h4><p>Keep the original strokes, then check orientation and crop.</p><div class="primary">＋ Choose a drawing</div></div></div>`,
-      understand:`<div class="phone-ui"><div class="appbar"><i>Story elements</i><span>2/4</span></div><div class="phone-card"><img src="${src}" alt=""><h4>What's in the picture</h4><div class="tag-row"><span>Child</span><span>Sun</span><span>Outdoors</span><span>Joy</span><span>Adventure</span></div><p>These clues become the starting point for the story.</p><div class="primary">Use these story elements</div></div></div>`,
+      upload:`<div class="phone-ui"><div class="appbar"><i>Drawry✎</i><span>···</span></div><div class="phone-card"><img src="${src}" alt=""><h4>Upload a drawing</h4><p>Keep the original strokes, then check orientation and crop.</p><p class="phone-preview-status">Original drawing · Imported</p></div></div>`,
+      understand:`<div class="phone-ui"><div class="appbar"><i>Story elements</i><span>2/4</span></div><div class="phone-card"><img src="${src}" alt=""><h4>What's in the picture</h4><div class="tag-row"><span>Child</span><span>Sun</span><span>Outdoors</span><span>Joy</span><span>Adventure</span></div><p>These clues become the starting point for the story.</p><p class="phone-preview-status">Story elements · Prepared</p></div></div>`,
       story:`<div class="phone-ui"><div class="appbar"><i>A Little Sunshine</i><span>3/4</span></div><div class="phone-card"><img src="${story3}" alt="Third frame from the generated story video"><h4>Scene 3 · Discovery</h4><p>The character follows the sunshine as clues from the drawing unfold into a story.</p><div class="story-list"><div><img src="${story1}" alt="First frame from the story video"><span>Scene 1 · Seeing the sun</span></div><div><img src="${story2}" alt="Second frame from the story video"><span>Scene 2 · Reaching up</span></div></div></div></div>`,
       family:`<div class="phone-ui"><div class="appbar"><i>An'an's Drawry</i><span>⌂</span></div><div class="phone-card"><h4>Child's space</h4><div class="story-list"><div><img src="${poster}" alt="A Little Sunshine story cover"><span>Latest · A Little Sunshine</span></div><div><img src="${src}" alt="Original drawing uploaded by the child"><span>Original drawing · Saved</span></div></div><div class="family-actions"><span>My drawings</span><span>Saved stories</span><span>History</span></div></div></div>`,
     };
@@ -691,7 +682,13 @@
   }
 
   function setupInteractions() {
-    bindMirroredVideo($("#hero-video"), $("#hero-video-ambient"));
+    window.PortfolioMedia?.attach();
+    document.addEventListener("portfolio:media-open", () => { pauseSync(); pauseControlLabs(); });
+    document.addEventListener("portfolio:media-close", event => {
+      if (syncVideos().includes(event.detail.video) && event.detail.duration) {
+        setSyncRatio(event.detail.time / event.detail.duration);
+      }
+    });
     bindVideoControl($("#hero-video"), $("#hero-play"));
     bindVideoControl($("#a3u-video"), $("#a3u-play"));
     bindVideoControl($("#mimiclite-g1-video"), $("#mimiclite-g1-play"));
@@ -708,7 +705,7 @@
         else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
         else if (!focusable.includes(document.activeElement)) { event.preventDefault(); first.focus(); }
       }
-      if(event.key==="Escape"){if(menuOpen)toggleMenu(false);else if(state.project)closeProject();}
+      if(event.key==="Escape"&&!window.PortfolioMedia?.isOpen){if(menuOpen)toggleMenu(false);else if(state.project)closeProject();}
     });
     $$('[data-menu-preview]').forEach(button=>{button.addEventListener("mouseenter",()=>setPreview(button.dataset.menuPreview,"menu"));button.addEventListener("focus",()=>setPreview(button.dataset.menuPreview,"menu"));});
     $$('[data-open-project]').forEach(button=>button.addEventListener("click",()=>openProject(button.dataset.openProject)));
@@ -789,7 +786,7 @@
     const mediaSelectors = [
       ".ego-lab", ".infra-path", ".project-note", ".sync-player", ".humanoid-facts",
       ".mimic-journey", ".a3u-stage-shell", ".a3u-stage-rail", ".dex-lab", ".dex-boundary", ".dex-qc-lab", ".dex-qc-notes", ".motion-lab", ".evidence-note", ".teleop-architecture",
-      ".teleop-lab", ".force-lab", ".drawry-experience", ".contribution-grid",
+      ".teleop-lab", ".drawry-experience", ".contribution-grid",
       ".drawry-contribution > figure",
     ];
     $$(mediaSelectors.join(",")).forEach((item) => { item.dataset.scrollReveal = "media"; });
@@ -833,7 +830,6 @@
   renderA3U();
   setHumanoidTrack(state.humanoidTrack, false);
   setSyncFocus(state.syncFocus);
-  [window.PortfolioMotion, window.PortfolioTeleop, window.PortfolioForce].forEach((lab) => lab?.init());
   renderControlLabs();
   renderDrawry();
 
@@ -841,6 +837,6 @@
   $("#project-view").addEventListener("scroll",onScroll,{passive:true});
   addEventListener("scroll",onScroll,{passive:true});
   onScroll();
-  playQuiet($("#hero-video"));
+  if (!state.project) playQuiet($("#hero-video"));
   requestAnimationFrame(animate);
 })();

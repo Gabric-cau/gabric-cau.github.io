@@ -35,7 +35,7 @@
     metaDescription: "郭阳溢的个人主页。就读于新加坡国立大学 Smart Industrial and Digital Transformation 专业，方向为 Robotics and Automation；研究与项目包括 Egocentric、Humanoid、机器人控制与真机实验。",
     footerTop: "回到顶部 ↑",
     header: { status: "CURRENTLY · NUS ROBOTICS" },
-    nav: { work: "项目", path: "路径", tech: "技术", contact: "联系", menu: "菜单" },
+    nav: { work: "项目", path: "路径", tech: "技术", contact: "联系", resume: "求职摘要", menu: "菜单" },
     menu: { label: "项目" },
     hero: {
       kicker: "ROBOTICS · NUS · SINGAPORE",
@@ -106,6 +106,7 @@
       title: "欢迎联系我。",
       copy: "我目前专注于 Egocentric 多模态人体数据采集，也希望继续交流机器人控制与人体数据相关的工作。欢迎交流真机调试和示范采集中的问题，也欢迎通过邮件联系研究合作与工作机会。",
     },
+    snapshot: {"role":"我的职责","result":"已验证结果","status":"当前状态","humanoid":{"role":"数据同步与回放、G1 部署复现、A3U 模型与接口适配。","result":"完成 G1 部署与 A3U 真机遥操作验证。","status":"A3U 简单动作可执行，复杂动作质量仍在调整。"},"manipulation":{"role":"独立开发样条运动 SDK，搭建 FR3 主从遥操作。","result":"SDK 已用于莆田 PUMA 鞋厂；完成主从臂真机跟随。","status":"已有真机记录；力交互仅保留职责概述。"}},
     project: { back: "全部项目", next: "下一个项目" },
     ego: {
       "secondaryLabel": "研究方向",
@@ -282,8 +283,10 @@
       teleopTitle: "FR3 主从遥操作",
       teleopIntro: "为降低实现成本，我复用样条运动 SDK 的插值方法搭建 FR3 主从遥操作，让后台采样与 125 Hz 控制循环并行。输入更新最新待处理目标，切换时接续连续轨迹；再对照原始输入、滤波、指令和实际位置，检查抖动与跟随偏差。",
       forceNav: "2-DoF 力反馈",
-      forceTitle: "<span class=\"heading-phrase\">2‑DoF 接触力矩</span>与力反馈",
-      forceIntro: "我在 2-DoF 主从机械臂上实现重力补偿、关节跟随与接触力反馈。用电机力矩减去模型估算的重力项，再通过迟滞判断和非对称低通抑制干扰，将接触阻力传回主臂，让操作者能感知从臂的接触变化。",
+      forceTitle: "2-DoF 力交互实验",
+      forceIntro: "参与 2-DoF 主从平台的力交互实验，工作聚焦关节跟随、操作手感与真机调试。",
+      pairCaption: "主从机械臂实机记录",
+      pairCopy: "双臂在真机上的跟随演示，下方另有抓取视频与轨迹对照。",
     },
     drawry: {
       name: "小绘书",
@@ -313,7 +316,7 @@
     metaDescription: "I'm Yangyi Guo, a master's student in Smart Industrial and Digital Transformation at NUS, on the Robotics and Automation track. I build motion-control software, work on humanoid deployment and focus on egocentric multimodal data capture.",
     footerTop: "Back to top ↑",
     header: { status: "CURRENTLY · NUS ROBOTICS" },
-    nav: { work: "Projects", path: "Path", tech: "Tech", contact: "Contact", menu: "Menu" },
+    nav: { work: "Projects", path: "Path", tech: "Tech", contact: "Contact", resume: "Resume", menu: "Menu" },
     menu: { label: "PROJECTS" },
     hero: {
       kicker: "ROBOTICS · NUS · SINGAPORE",
@@ -346,7 +349,7 @@
       humanoid: "EgoHumanoid · MimicLite · G1 / A3U",
       humanoidCopy: "I built synchronized human-data capture and robot replay, reproduced open-source MimicLite on G1, and adapted A3U's model, motion data and interfaces for policy training and hardware tests.",
       manipulation: "Servo motion · teleoperation · force feedback",
-      manipulationCopy: "I independently built a spline-motion SDK used at a PUMA footwear factory in Putian, reused its interpolation methods for FR3 teleoperation, and implemented gravity compensation and contact torque feedback on a 2-DoF setup.",
+      manipulationCopy: "I independently built a spline-motion SDK used at a PUMA footwear factory in Putian, reused its interpolation methods for FR3 teleoperation, and worked on force-interaction experiments on a 2-DoF setup.",
       drawry: "An AI story product built from children's drawings",
       drawryCopy: "On the Drawry team, I refined features and interactions and helped design the prototype. My focus was connecting children's drawings, AI-generated stories and shared family reading.",
     },
@@ -384,6 +387,7 @@
       title: "Let’s talk robots.",
       copy: "I'm focused on egocentric multimodal data capture and would love to meet people working on robot control and human demonstrations. Email me to swap ideas about a hardware problem, talk about data capture, or discuss research collaborations and engineering roles.",
     },
+    snapshot: {"role":"My role","result":"Verified result","status":"Status","humanoid":{"role":"Data synchronization and replay, G1 deployment reproduction, and A3U model and interface adaptation.","result":"G1 deployment and A3U teleoperation verified on real hardware.","status":"A3U executes simple motions; complex motion quality is still being refined."},"manipulation":{"role":"Independently built the spline-motion SDK and FR3 leader-follower teleoperation.","result":"SDK used at a PUMA footwear factory in Putian; paired arms follow on real hardware.","status":"Real-hardware recordings available; force-interaction work is summarized at role level."}},
     project: { back: "All projects", next: "Next project" },
     ego: {
       "secondaryLabel": "Research direction",
@@ -560,8 +564,10 @@
       teleopTitle: "FR3 Leader–Follower Teleoperation",
       teleopIntro: "I reused my spline SDK's interpolation methods for FR3 teleoperation at low implementation cost. Sampling runs alongside a 125 Hz control loop. Input updates the pending target; I replan from the current state only when switching conditions are met. I compare raw input, filtering, commands and actual position.",
       forceNav: "2-DoF Force Feedback",
-      forceTitle: "2‑DoF Contact Torque and Force Feedback",
-      forceIntro: "I wanted the operator to feel when the follower meets resistance. On a 2-DoF setup, I implemented gravity compensation, joint following and contact torque feedback. I subtract model-estimated gravity from motor torque, then use hysteresis and an asymmetric low-pass filter to return resistance to the leader.",
+      forceTitle: "2-DoF Force Interaction",
+      forceIntro: "I worked on force-interaction experiments with a 2-DoF leader-follower setup, focusing on joint following, operator feedback and hardware testing.",
+      pairCaption: "Leader-follower arm recording",
+      pairCopy: "Paired-arm following on real hardware. The grasping recording and trajectory comparison follow below.",
     },
     drawry: {
       name: "Drawry",

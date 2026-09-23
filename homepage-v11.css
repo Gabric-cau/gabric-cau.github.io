@@ -1544,13 +1544,13 @@ html[data-language="en"] .home-view .contact > div h2 {
   .home-view .projects-section .work-row.work-row--compact .work-summary { font-size: 13px; line-height: 1.62; }
 }
 
-/* The source is a 9:16 phone recording. Keep one complete, undistorted video
-   visible and let a dim synchronized layer carry the full-bleed atmosphere. */
+/* Keep the complete portrait recording over a static poster backdrop. */
 .home-view .hero-media .hero-video {
   pointer-events: none;
 }
 
 .home-view .hero-media .hero-video--ambient {
+  position: absolute;
   z-index: 0;
   opacity: .3;
   filter: saturate(.55) contrast(1.08) brightness(.68);

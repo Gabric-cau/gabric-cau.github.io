@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-09-23T14:16:43.309Z",
+  "generatedAt": "2026-09-23T15:09:51.910Z",
   "fileCount": 185,
-  "totalBytes": 143274510,
+  "totalBytes": 143296202,
   "files": [
     {
       "path": "index.html",
-      "bytes": 50045,
-      "sha256": "f33b1af9740b5aa3fb6203b42d9d64efde22fbb232debd840f41508fa0640b8e"
+      "bytes": 55493,
+      "sha256": "7a6f44a8d20630362ec3948d4262d78d9997b1ac26971d6f374f2af30d4c40a4"
     },
     {
       "path": "content-v6.js",
-      "bytes": 53405,
-      "sha256": "cc331344dd500a6a20a968f8a6655784e08027fde4897a21bd9f1e762f9fd1a9"
+      "bytes": 59093,
+      "sha256": "82085c3ae4524829919c8296522fcaefd8dc2ebfd0d52aa2fd4ca2ddc3dbe843"
     },
     {
       "path": "script-v6.js",
@@ -20,13 +20,13 @@
     },
     {
       "path": "styles-v6.css",
-      "bytes": 210005,
-      "sha256": "9e99ae5cabe4dbeeb03c7682a35a8cb7750d5cb2cee4a6df4ee8b3988d82a569"
+      "bytes": 213499,
+      "sha256": "61b27c6d25cc665579e68db4ba4d125e026b8d96e5f4b9546470017fa301cd52"
     },
     {
       "path": "homepage-v11.css",
-      "bytes": 59212,
-      "sha256": "4314d33a3d5138627a60f8b5ae436222ff50666789761f6c991401431b721d58"
+      "bytes": 59177,
+      "sha256": "a485c5205e47eafedd30bc77a4fbb96549b6120084247c29f095647e1e1f11e5"
     },
     {
       "path": "fonts.css",
@@ -50,38 +50,38 @@
     },
     {
       "path": "control-teleop.js",
-      "bytes": 19128,
-      "sha256": "201a8cb91f7e4a2fc275885406e9cc101190c8b55b543dc1e1f3c9068bbe55b6"
+      "bytes": 17744,
+      "sha256": "552180a0b11e4766e9535d638f35becef5b4f70e52914f8b4021b496ca66ac59"
     },
     {
       "path": "control-teleop.css",
-      "bytes": 7575,
-      "sha256": "5f23ca037009bae21703ef6b7494462f8702b263dd1e6fc544b5d39a15de3cab"
+      "bytes": 11720,
+      "sha256": "8c5b9551e79be700ed8fdd0e585d32fa0b00e0a065e96461d470d07103d71501"
     },
     {
       "path": "media-viewer.js",
-      "bytes": 8521,
-      "sha256": "766d8d802249ba9cd112ac115f5fa11c1e7c33b5121d15d64dbe1d37d34981c8"
+      "bytes": 9187,
+      "sha256": "7e0bf009e71b4d4f4e89c53697922a9c6269b42e3904d787c670ed3f67a97496"
     },
     {
       "path": "media-viewer.css",
-      "bytes": 2538,
-      "sha256": "d0194ea8ca8f1dc09c29d3b3a9e34032d1b220965791de680e48be8c4698540a"
+      "bytes": 2815,
+      "sha256": "507dfad3c0ef2ad487d80f96f6a56c668507046781013fcfadb2a8010bcd1f86"
     },
     {
       "path": "resume.html",
-      "bytes": 6978,
-      "sha256": "3ed5ff696e98d465a2f792c556fc409aedc211f7b7787320b09e09cd34f44feb"
+      "bytes": 8725,
+      "sha256": "b5accd7552c4e1d046389465d020be64721b4a83b3202e7aa204164409c4e52c"
     },
     {
       "path": "resume.css",
-      "bytes": 5052,
-      "sha256": "d347259ed61f33fe22c5b578c66aeefec74fc8e29a02d251a0d7ba360a3f1e20"
+      "bytes": 5610,
+      "sha256": "f26f63a6916ac88b81a86dafa2f7cca0df5bf98b2bbebda108f3c6689d377e1d"
     },
     {
       "path": "resume.js",
-      "bytes": 5341,
-      "sha256": "eab1fd20b6ac8720f51eb877cd5b3706b2ef54f3095d4c39d478669282b96da9"
+      "bytes": 6429,
+      "sha256": "bf2200ced742f1655773619a906316d4da6676dbd52cbbf5c82873380b68db5b"
     },
     {
       "path": "assets/data/motion-comparison.json",

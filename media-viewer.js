@@ -45,6 +45,16 @@
     button.hidden = video.hidden;
     button.title = label("放大播放", "Expand video");
     button.setAttribute("aria-label", button.title);
+    positionButton(video);
+  }
+
+  function positionButton(video) {
+    const button = bindings.get(video)?.button;
+    if (!button || video.hidden || !video.offsetWidth || !video.offsetHeight) return;
+    const size = 32;
+    const controls = video.controls ? 48 : 0;
+    button.style.left = `${video.offsetLeft + video.offsetWidth - size - 8}px`;
+    button.style.top = `${video.offsetTop + video.offsetHeight - size - 8 - controls}px`;
   }
 
   function createDialog() {
@@ -171,8 +181,11 @@
         button.className = "media-expand";
         button.innerHTML = '<span aria-hidden="true">⛶</span>';
         button.addEventListener("click", () => open(video));
-        binding = { button };
+        const resize = new ResizeObserver(() => positionButton(video));
+        binding = { button, resize };
         bindings.set(video, binding);
+        resize.observe(video);
+        video.addEventListener("loadedmetadata", () => positionButton(video));
         video.addEventListener("pointerdown", () => hydrate(video), { passive: true });
         video.addEventListener("keydown", () => hydrate(video));
         video.addEventListener("play", () => { if (!video.getAttribute("src")) hydrate(video); });
@@ -182,6 +195,7 @@
       const parent = video.parentElement;
       parent.classList.add("media-expand-host");
       if (binding.button.parentElement !== parent) parent.append(binding.button);
+      binding.resize.observe(parent);
       refreshButton(video);
     }
   }

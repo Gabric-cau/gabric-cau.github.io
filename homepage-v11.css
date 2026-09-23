@@ -730,11 +730,11 @@ html[data-language="zh"] .home-view .now-grid .now-copy p {
   color: #f7f8f5;
   border-bottom: 1px solid rgba(255,255,255,.17);
   background: transparent;
-  transition: color .25s ease, background .25s ease, padding .3s var(--ease-out);
+  transition: color .25s ease, background .25s ease;
 }
 
 .home-view .tech-index article:hover {
-  padding-inline: 18px;
+  padding-inline: 0;
   color: #08110d;
   background: var(--lime);
 }
@@ -989,7 +989,7 @@ html[data-language="en"] .home-view .contact > div h2 {
   .home-view .tech-index h3 { grid-column: 2; grid-row: 1; font-size: 19px; }
   .home-view .tech-index p { grid-column: 2; grid-row: 2; font-size: 10px; }
   .home-view .tech-index small { grid-column: 2; grid-row: 3; }
-  .home-view .tech-index article:hover { padding-inline: 12px; }
+  .home-view .tech-index article:hover { padding-inline: 0; }
   .home-view .contact { grid-template-columns: 1fr; gap: 14px; padding: 54px 16px 24px; }
   .home-view .contact > div h2,
   html[data-language="en"] .home-view .contact > div h2 { font-size: 44px; }

@@ -28,6 +28,7 @@ button { font: inherit; cursor: pointer; }
 h1 { margin: 0; font-size: 36px; line-height: 1.15; font-weight: 600; }
 .focus { margin: 12px 0 0; font-weight: 600; font-size: 16px; }
 .summary { margin: 12px 0 0; color: var(--muted); max-width: 66ch; }
+.availability { margin: 12px 0 0; color: var(--green); font-size: 13px; font-weight: 600; }
 address { align-self: start; padding-top: 29px; display: grid; gap: 6px; font-style: normal; font-size: 13px; }
 address a { overflow-wrap: anywhere; }
 .resume-section { display: grid; grid-template-columns: 156px minmax(0, 1fr); gap: 26px; border-top: 1px solid var(--line); padding: 23px 0; }
@@ -38,6 +39,10 @@ h3 { margin: 0; font-size: 15px; line-height: 1.5; font-weight: 600; }
 p { margin: 5px 0 0; }
 .muted { color: var(--muted); }
 .entries { display: grid; gap: 21px; }
+.education-copy { gap: 14px; }
+.achievements { margin: 6px 0 0; padding-left: 17px; }
+.achievements li + li { margin-top: 7px; }
+.award { margin: 0; color: var(--green); font-size: 13px; font-weight: 600; }
 article { scroll-margin-top: 24px; }
 article:target { border-left: 3px solid var(--green); padding-left: 13px; }
 .skills { margin: 0; display: grid; gap: 10px; }
@@ -62,22 +67,28 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 18px
 @media print {
   @page { size: A4; margin: 13mm; }
   html { scroll-behavior: auto; }
-  body { color: #111; font-size: 9pt; line-height: 1.38; }
+  body { color: #111; font-size: 8.7pt; line-height: 1.32; }
   .toolbar, .skip-link, footer { display: none; }
   main { width: 100%; }
   a { color: #111; text-decoration: none; }
-  .identity { grid-template-columns: minmax(0, 1fr) auto; gap: 20px; padding: 0 0 15px; }
+  .identity { grid-template-columns: minmax(0, 1fr) auto; gap: 20px; padding: 0 0 11px; }
   .eyebrow { margin-bottom: 5px; font-size: 8pt; }
   h1 { font-size: 25pt; }
   .focus { font-size: 10pt; margin-top: 7px; }
   .summary { margin-top: 7px; }
+  .availability { font-size: 8pt; margin-top: 7px; }
   address { padding-top: 22px; display: grid; font-size: 8pt; gap: 4px; }
-  .resume-section { grid-template-columns: 111px minmax(0, 1fr); gap: 17px; padding: 12px 0; }
+  .resume-section { grid-template-columns: 100px minmax(0, 1fr); gap: 15px; padding: 10px 0; }
   h2 { font-size: 8.5pt; }
   h3 { font-size: 9pt; }
   .entry-heading { display: flex; gap: 2px 10px; }
   .entry-heading > span { font-size: 8pt; }
-  .entries { gap: 12px; }
+  .entries { gap: 10px; }
+  .education-copy { gap: 6px; }
+  .education-copy p { margin-top: 1px; }
+  .achievements { margin-top: 4px; padding-left: 13px; }
+  .achievements li + li { margin-top: 4px; }
+  .award { font-size: 8pt; }
   article { break-inside: avoid; }
   article:target { border: 0; padding: 0; }
   .skills { gap: 6px; }

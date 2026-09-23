@@ -3,7 +3,6 @@
 
   const TEXT = {
     zh: {
-      flow: [["后台采样", "与控制循环并行"], ["最新目标", "替换待处理姿态"], ["滤波与在线插值", "延续当前运动状态"], ["FR3 执行", "125 Hz ServoJ"]],
       tabs: ["滤波前后", "目标与连续指令", "实际跟随"],
       descriptions: [
         "我记录原始输入和 Kalman 输出，在同一时间轴上比较滤波前后的变化。调参时同时检查小幅抖动和快速转向的跟随延迟，平衡平稳程度与响应速度。",
@@ -13,12 +12,11 @@
       labels: { raw: "原始输入", filtered: "Kalman 输出", target: "更新的目标", command: "连续指令", actual: "实际关节位置" },
       plotTitle: ["输入处理", "在线五次插值", "指令跟随"],
       joint: "关节", full: "完整记录", detail: "4 秒细节", window: "时间范围", seek: "记录时间",
-      video: "FR3 真机抓取", videoNote: "真机演示与右侧记录为独立素材。", degrees: "角度变化 / °",
+      degrees: "角度变化 / °",
       recording: "同一次运行记录", paused: "已暂停", playing: "播放中", play: "播放记录", pause: "暂停记录", restart: "回到片段起点",
       source: "实测记录 · Kalman + Quintic", note: "原始时间戳与配对信号，使用相同角度基准。", loading: "正在载入实验记录", error: "实验记录暂时未能载入", retry: "重新载入", view: "对比阶段", time: "时间", difference: "两条曲线的差值",
     },
     en: {
-      flow: [["Background sampling", "Concurrent with control"], ["Latest target", "Replace pending pose"], ["Filter + interpolate", "Continue the current motion"], ["FR3 execution", "125 Hz ServoJ"]],
       tabs: ["Before / after filtering", "Target / continuous command", "Actual tracking"],
       descriptions: [
         "Responsive motion matters as much to me as a clean signal. I compare raw input and Kalman output on the same timeline, tuning for less jitter without making quick changes feel sluggish.",
@@ -28,7 +26,7 @@
       labels: { raw: "Raw input", filtered: "Kalman output", target: "Updated target", command: "Continuous command", actual: "Actual joint position" },
       plotTitle: ["Input processing", "Online quintic interpolation", "Command tracking"],
       joint: "Joint", full: "Full recording", detail: "4 s detail", window: "Time range", seek: "Recording time",
-      video: "FR3 hardware grasping", videoNote: "Hardware video and signal recording are separate runs.", degrees: "Angle change / °",
+      degrees: "Angle change / °",
       recording: "Paired signals from one run", paused: "Paused", playing: "Playing", play: "Play recording", pause: "Pause recording", restart: "Return to window start",
       source: "RECORDED · KALMAN + QUINTIC", note: "Original timestamps; paired signals share the same angular reference.", loading: "Loading experiment recording", error: "Experiment recording could not be loaded", retry: "Retry", view: "Comparison", time: "Time", difference: "Difference between signals",
     },
@@ -81,19 +79,13 @@
     const host = document.getElementById("teleop-lab");
     if (!host) return;
     state.host = host;
-    const previousVideo = find("#ctl-teleop-video");
     stop();
     state.observer?.disconnect();
     const t = text();
     host.classList.add("ctl-teleop");
     host.dataset.evidenceMode = state.data ? "recorded" : state.error ? "error" : "loading";
     host.innerHTML = `
-      <ol class="ctl-teleop-flow">${t.flow.map(([title, detail], i) => `<li><span class="ctl-teleop-number">0${i + 1}</span><div><strong>${title}</strong><span>${detail}</span></div></li>`).join("")}</ol>
       <div class="ctl-teleop-body">
-        <figure class="ctl-teleop-video">
-          <video id="ctl-teleop-video" data-src="assets/media/arm-teleop-grasp.mp4" poster="assets/media/arm-teleop-grasp-poster.jpg" controls muted playsinline preload="none" aria-label="${t.video}"></video>
-          <figcaption><strong>${t.video}</strong><span>${t.videoNote}</span></figcaption>
-        </figure>
         <div class="ctl-teleop-analysis">
           <div class="ctl-teleop-tabs" role="tablist" aria-label="${t.view}">${t.tabs.map((label, i) => `<button type="button" role="tab" id="ctl-teleop-tab-${i}" aria-controls="ctl-teleop-panel" aria-selected="${state.mode === i}" tabindex="${state.mode === i ? 0 : -1}" data-teleop-mode="${i}">${label}</button>`).join("")}</div>
           <div id="ctl-teleop-panel" role="tabpanel" aria-labelledby="ctl-teleop-tab-${state.mode}">
@@ -107,11 +99,6 @@
           </div>
         </div>
       </div>`;
-    if (previousVideo) {
-      previousVideo.setAttribute("aria-label", t.video);
-      find("#ctl-teleop-video").replaceWith(previousVideo);
-    }
-    window.PortfolioMedia?.attach(host);
     bind();
     state.observer = new ResizeObserver(draw);
     state.observer.observe(find(".ctl-teleop-plot"));

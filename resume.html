@@ -29,7 +29,8 @@
         <p class="eyebrow" data-text="eyebrow">RESEARCH &amp; ENGINEERING</p>
         <h1 id="name" data-text="name">Yangyi Guo</h1>
         <p class="focus" data-text="focus">Robot motion control, teleoperation and humanoid deployment</p>
-        <p class="summary" data-text="summary">NUS master's student on the Robotics and Automation track. Experience spans mechanical and embedded systems, vision deployment, robot-arm control and human-motion data, with a focus on testing systems on real hardware.</p>
+        <p class="summary" data-text="summary">NUS master's student with a background in mechanical engineering and data science. Built teleoperation systems and trained humanoid policies, with a focus on real-robot experiments, fault diagnosis and system improvement.</p>
+        <p class="availability" data-text="availability">Full-time internships: Dec 2026–Jan 2027; May–Aug 2027. Capstone: Aug 2027–Jan 2028.</p>
       </div>
       <address>
         <span data-text="location">Singapore</span>
@@ -41,51 +42,63 @@
 
     <section class="resume-section education" aria-labelledby="education-title">
       <h2 id="education-title" data-text="education">Education</h2>
-      <div class="education-copy">
-        <div class="entry-heading"><h3 data-text="university">National University of Singapore</h3><span data-text="degree">Master's student · 2026–2028</span></div>
-        <p>Smart Industrial and Digital Transformation</p>
-        <p class="muted" data-text="track">Track: Robotics and Automation</p>
+      <div class="education-copy entries">
+        <div><div class="entry-heading"><h3 data-text="university">National University of Singapore</h3><span data-text="degree">Expected Feb 2028</span></div><p data-text="nusDegree">MSc Smart Industries &amp; Digital Transformation · Robotics &amp; Automation</p></div>
+        <div><div class="entry-heading"><h3 data-text="cauUniversity">China Agricultural University</h3><span data-text="cauDate">Jul 2026</span></div><p data-text="cauDegree">Second Bachelor's · Data Science &amp; Big Data Technology</p></div>
+        <div><div class="entry-heading"><h3 data-text="ncistUniversity">North China Institute of Science &amp; Technology</h3><span data-text="ncistDate">Jun 2024</span></div><p data-text="ncistDegree">B.Eng. · Mechanical Design, Manufacturing &amp; Automation</p></div>
       </div>
     </section>
 
     <section class="resume-section" aria-labelledby="experience-title">
-      <h2 id="experience-title" data-text="experience">Selected experience</h2>
+      <h2 id="experience-title" data-text="experience">Research &amp; engineering</h2>
       <div class="entries">
         <article id="experience-ego">
-          <div class="entry-heading"><h3><a href="index.html?lang=en#project/egocentric" data-project="egocentric" data-text="egoTitle">Egocentric research</a></h3><span data-text="current">Current research · NUS</span></div>
-          <p data-text="egoCopy">Research direction: multimodal human-data capture. Responsibilities cover system integration, experiment support and data quality. The project is at an early stage.</p>
-        </article>
-        <article id="experience-robot-arms">
-          <div class="entry-heading"><h3><a href="index.html?lang=en#project/manipulation" data-project="manipulation" data-text="armsTitle">Robot motion control and teleoperation</a></h3><span data-text="armsContext">Zhongke Huiling · Internship</span></div>
-          <p data-text="armsCopy">Independently built a spline-motion SDK used at a PUMA footwear factory in Putian. Developed FR3 leader–follower teleoperation and worked on force interaction, with validation on real robot hardware.</p>
+          <div class="entry-heading"><h3><a href="index.html?lang=en#project/egocentric" data-project="egocentric" data-text="egoTitle">NUS LV Robotics Lab · Robotics Research</a></h3><span data-text="current">Aug 2026–Present</span></div>
+          <p data-text="egoCopy">Lead system integration for egocentric robot-learning research. Responsibilities cover experiment support, capture-fault diagnosis and data-quality checks. The project is at an early stage.</p>
         </article>
         <article id="experience-humanoid">
-          <div class="entry-heading"><h3><a href="index.html?lang=en#project/humanoid" data-project="humanoid" data-text="humanoidTitle">Human-motion data and humanoid deployment</a></h3><span>EgoHumanoid · MimicLite</span></div>
-          <p data-text="humanoidCopy">Built synchronized human-data capture and robot replay. Reproduced open-source MimicLite deployment on G1 and adapted the A3U model, motion data and interfaces for policy training and hardware tests.</p>
+          <div class="entry-heading"><h3><a href="index.html?lang=en#project/humanoid" data-project="humanoid" data-text="humanoidTitle">Tsinghua AIR &amp; RoboParty Lab · Algorithm Engineer</a></h3><span data-text="humanoidDate">May–Sep 2026</span></div>
+          <ul class="achievements">
+            <li data-text="humanoidCopy">Mapped VR/SMPL demonstrations to G1 representations; fine-tuned NVIDIA GR00T and contributed to SONIC integration for team navigation and pre-grasp demonstrations. Collected about 300 raw episodes and synchronized data to a 50 Hz training timeline.</li>
+            <li data-text="humanoidValidation">Adapted MimicLite to 31-DoF A3Ultra, prepared motions and trained PPO tracking policies. Evaluated sim-to-sim and verified Orin inference; helped reduce high-frequency jitter in guarded hardware tests. Response latency remained unresolved.</li>
+          </ul>
         </article>
-        <article id="experience-vision">
-          <div class="entry-heading"><h3 data-text="visionTitle">Vision deployment</h3><span data-text="visionContext">Edge inference · Field validation</span></div>
-          <p data-text="visionCopy">Prepared data, trained and optimized YOLOv11 for aerial Asian-elephant detection, and deployed the model to an edge device. Checked performance using real video streams and field testing.</p>
-        </article>
-        <article id="experience-undergraduate">
-          <div class="entry-heading"><h3 data-text="undergraduateTitle">Integrated logistics robot</h3><span data-text="undergraduateContext">Undergraduate thesis</span></div>
-          <p data-text="undergraduateCopy">Built the mechanism and integrated STM32 control with Raspberry Pi and OpenCV vision. The robot performed target detection, transport, fixed-point placement and return.</p>
+        <article id="experience-robot-arms">
+          <div class="entry-heading"><h3><a href="index.html?lang=en#project/manipulation" data-project="manipulation" data-text="armsTitle">CASBOT · Robotics Algorithm Intern</a></h3><span data-text="armsContext">Dec 2025–May 2026</span></div>
+          <ul class="achievements">
+            <li data-text="armsCopy">Built 125 Hz FR3 leader–follower teleoperation. Combined filtering, online quintic interpolation and look-ahead compensation to reduce joint-tracking RMSE from 5.95° to 1.30° in controlled comparisons; developed replay and tuning tools.</li>
+            <li data-text="sdkCopy">Independently built a reusable teach-and-replay SDK with spline planning and about 4 ms ServoCart command streaming. Used logs to address IK jumps, orientation discontinuities and queue congestion.</li>
+            <li data-text="forceCopy">Implemented gravity-compensated contact-torque feedback on a 2-DoF leader–follower setup so the operator could feel contact resistance.</li>
+          </ul>
         </article>
       </div>
     </section>
 
-    <section class="resume-section" aria-labelledby="skills-title">
-      <h2 id="skills-title" data-text="skills">Technical experience</h2>
-      <dl class="skills">
-        <div><dt data-text="controlSkillTitle">Robotics &amp; control</dt><dd data-text="controlSkillCopy">Trajectory interpolation, real-time command streaming, teleoperation and hardware debugging.</dd></div>
-        <div><dt data-text="dataSkillTitle">Data &amp; vision</dt><dd data-text="dataSkillCopy">Human-motion data, robot motion mapping, synchronized replay, OpenCV, YOLOv11 and HDF5.</dd></div>
-        <div><dt data-text="hardwareSkillTitle">Systems &amp; hardware</dt><dd data-text="hardwareSkillCopy">Robot model and device integration, simulation validation, STM32 and Raspberry Pi.</dd></div>
-      </dl>
+    <section class="resume-section" aria-labelledby="projects-title">
+      <h2 id="projects-title" data-text="projects">Selected projects</h2>
+      <div class="entries">
+        <article id="experience-vision">
+          <div class="entry-heading"><h3 data-text="visionTitle">China Tower · UAV elephant detection</h3><span data-text="visionContext">May–Dec 2025</span></div>
+          <p data-text="visionCopy">Reduced false positives by 85% through hard-sample iteration, augmentation and YOLOv11/SimAM adjustments. Completed edge deployment and pilot validation.</p>
+        </article>
+        <article id="experience-undergraduate">
+          <div class="entry-heading"><h3 data-text="undergraduateTitle">Autonomous handling robot</h3><span data-text="undergraduateContext">Outstanding Graduation Project · 2024</span></div>
+          <p data-text="undergraduateCopy">Integrated STM32, Raspberry Pi and OpenCV for QR/color recognition, localization, pickup, placement and autonomous return.</p>
+        </article>
+        <article id="experience-compliance">
+          <div class="entry-heading"><h3><a href="index.html?lang=en#project/manipulation" data-project="manipulation" data-text="complianceTitle">FAIRINO impedance &amp; compliance integration</a></h3><span data-text="complianceStatus">Hardware validation pending</span></div>
+          <p data-text="complianceCopy">Built a configurable experiment runner with parameter checks and shutdown handling. Verified command sequences with mock-SDK tests.</p>
+        </article>
+        <p class="award" data-text="award">1st Prize · Robotics &amp; Algorithm Competition (2025)</p>
+      </div>
     </section>
 
-    <section class="resume-section additional" aria-labelledby="additional-title">
-      <h2 id="additional-title" data-text="additional">Additional project</h2>
-      <p><a href="index.html?lang=en#project/drawry" data-project="drawry">Drawry</a><span data-text="drawryCopy"> · Refined features and interactions and helped design an AI storytelling prototype connecting children's drawings with family reading.</span></p>
+    <section class="resume-section" aria-labelledby="skills-title">
+      <h2 id="skills-title" data-text="skills">Skills &amp; tools</h2>
+      <dl class="skills">
+        <div><dt data-text="controlSkillTitle">Control &amp; learning</dt><dd data-text="controlSkillCopy">Trajectory/servo control, teleoperation, gravity compensation, PPO motion tracking, human-motion retargeting and robot test automation.</dd></div>
+        <div><dt data-text="dataSkillTitle">Tools &amp; systems</dt><dd>Python, PyTorch, ROS 2, MuJoCo, IsaacLab, Pinocchio, OpenCV, ONNX, Linux/Git.</dd></div>
+      </dl>
     </section>
   </main>
   <footer><span data-text="footer">Yangyi Guo · Research &amp; engineering</span><a href="index.html?lang=en#contact" data-contact-link data-text="contact">Contact</a></footer>

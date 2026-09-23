@@ -21,7 +21,7 @@
 .ctl-teleop-number { color: #b74233; font: 12px/1.3 var(--mono, monospace); }
 .ctl-teleop-flow strong { display: block; font-size: 18px; line-height: 1.4; font-weight: 650; }
 .ctl-teleop-flow li div > span { display: block; margin-top: 3px; font-size: 14px; line-height: 1.5; color: #54675e; }
-.ctl-teleop-body { display: grid; grid-template-columns: minmax(230px, .35fr) minmax(0, 1fr); align-items: start; gap: 28px; }
+.ctl-teleop-body { display: block; }
 .ctl-teleop-video { margin: 0; min-width: 0; }
 .ctl-teleop-video video { display: block; width: 100%; max-height: 650px; aspect-ratio: 9 / 16; object-fit: contain; background: #0b1612; }
 .ctl-teleop-video figcaption { padding-top: 12px; display: block; line-height: 1.5; }
@@ -64,11 +64,9 @@
 .ctl-teleop-source > span { color: #34513f; }
 .ctl-teleop :focus-visible { outline: 2px solid #cb513d; outline-offset: 3px; }
 @media (min-width: 1600px) {
-  .ctl-teleop-body { grid-template-columns: minmax(250px, .31fr) minmax(0, 1fr); gap: 34px; }
   .ctl-teleop-plot { height: 355px; }
 }
 @media (max-width: 1000px) {
-  .ctl-teleop-body { grid-template-columns: minmax(180px, .34fr) minmax(0, 1fr); gap: 18px; }
   .ctl-teleop-flow li { padding: 15px 10px; gap: 9px; }
   .ctl-teleop-flow strong { font-size: 16px; }
   .ctl-teleop-flow li div > span { font-size: 13px; }
@@ -86,7 +84,6 @@
   .ctl-teleop-flow li:nth-child(2) { border-right: 0; }
   .ctl-teleop-flow li:nth-child(n+3) { border-top: 1px solid #b9c6be; }
   .ctl-teleop-flow li:nth-child(3) { padding-left: 0; }
-  .ctl-teleop-body { display: flex; flex-direction: column; gap: 20px; }
   .ctl-teleop-analysis { width: 100%; order: 0; }
   .ctl-teleop-video { order: 1; width: 100%; display: grid; grid-template-columns: minmax(140px, .7fr) minmax(0, 1fr); gap: 18px; }
   .ctl-teleop-video video { max-height: 320px; }
@@ -100,4 +97,57 @@
   .ctl-teleop-readout i { width: 12px; }
   .ctl-teleop-transport { gap: 7px; padding-inline: 12px; }
   .ctl-teleop-transport output { flex-basis: 58px; font-size: 12px; }
+}
+
+.control-chapter-nav { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+#project-manipulation .teleop-chapter { padding-block: 32px; }
+#project-manipulation .teleop-chapter .chapter-heading { margin-bottom: 26px; }
+#project-manipulation .teleop-chapter .chapter-heading h2,
+#project-manipulation .teleop-analysis-chapter .chapter-heading h2,
+#project-manipulation .compliance-chapter .chapter-heading h2 { font-size: 40px; line-height: 1.15; letter-spacing: 0; }
+#project-manipulation .teleop-chapter .chapter-heading > p { font-size: 16px; line-height: 1.6; }
+.teleop-recordings { display: grid; grid-template-columns: minmax(190px, .62fr) repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; }
+.teleop-recordings .ctl-teleop-flow { grid-template-columns: 1fr; margin: 0; align-self: stretch; border-bottom: 0; }
+.teleop-recordings .ctl-teleop-flow li { border-right: 0; border-bottom: 1px solid #b9c6be; padding: 18px 10px 18px 0; gap: 12px; }
+.teleop-recordings .ctl-teleop-flow strong { font-size: 18px; }
+.teleop-recordings .ctl-teleop-flow li div > span { font-size: 14px; }
+.teleop-recording { margin: 0; min-width: 0; }
+.teleop-recording-frame { position: relative; height: min(580px, calc(100svh - 360px)); min-height: 320px; background: #0b1612; }
+.teleop-recording-frame video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.teleop-recording figcaption { margin-top: 12px; font-size: 18px; line-height: 1.4; }
+.teleop-recordings-note { margin: 14px 0 0; color: #54675e; font-size: 13px; line-height: 1.5; }
+#project-manipulation .teleop-analysis-chapter { border-top: 1px solid #b9c6be; padding-block: 32px; }
+#project-manipulation .teleop-analysis-chapter .chapter-heading { margin-bottom: 28px; }
+#project-manipulation .teleop-analysis-chapter .chapter-heading > p { font-size: 16px; line-height: 1.6; }
+.teleop-analysis-chapter .ctl-teleop-plot { height: min(325px, 32svh); min-height: 240px; }
+.force-work { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-top: 1px solid #b9c6be; padding-top: 28px; }
+.force-work h3, .contact-methods h3, .compliance-runner h3 { margin: 0 0 14px; font-size: 24px; line-height: 1.3; letter-spacing: 0; }
+.force-work p, .contact-methods p, .compliance-runner dd { margin: 0; font-size: 17px; line-height: 1.7; }
+.force-feedback-loop { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+.force-feedback-loop li { padding: 15px 0; border-bottom: 1px solid #b9c6be; font-size: 17px; }
+.force-feedback-loop li::before { content: "↔"; margin-right: 10px; color: #b74233; }
+.contact-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-block: 28px; border-block: 1px solid #b9c6be; }
+.contact-methods .contact-method-mapping { margin-bottom: 12px; font-weight: 600; color: #b74233; }
+.compliance-runner { margin-top: 34px; }
+.compliance-runner dl { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.compliance-runner dt { font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+.runner-engineering { padding-block: 18px; margin: 22px 0 0; border-top: 1px solid #b9c6be; font-size: 16px; line-height: 1.6; }
+.runner-status { margin: 0; font-size: 15px; line-height: 1.6; color: #54675e; }
+@media (max-width: 980px) {
+  .control-chapter-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .teleop-recordings { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .teleop-recordings .ctl-teleop-flow { grid-column: 1 / -1; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .teleop-recordings .ctl-teleop-flow li { align-items: start; }
+  .teleop-recordings .ctl-teleop-flow strong { font-size: 15px; }
+  .teleop-recordings .ctl-teleop-flow li div > span { font-size: 12px; }
+  .teleop-recording-frame { height: 460px; min-height: 0; }
+}
+@media (max-width: 600px) {
+  #project-manipulation .teleop-chapter .chapter-heading h2, #project-manipulation .teleop-analysis-chapter .chapter-heading h2, #project-manipulation .compliance-chapter .chapter-heading h2 { font-size: 30px; }
+  .teleop-recordings { gap: 18px 12px; }
+  .teleop-recordings .ctl-teleop-flow { grid-template-columns: 1fr 1fr; }
+  .teleop-recordings .ctl-teleop-flow li { border-top: 0; }
+  .teleop-recording-frame { height: auto; aspect-ratio: 9 / 18; }
+  .teleop-recording figcaption { font-size: 15px; }
+  .force-work, .contact-methods, .compliance-runner dl { grid-template-columns: 1fr; gap: 28px; }
 }

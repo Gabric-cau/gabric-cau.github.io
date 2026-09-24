@@ -292,6 +292,16 @@
     }));
   }
 
+  function settleProjectTransition(transition, sourceTitle, targetTitle) {
+    const cleanup = () => {
+      sourceTitle?.style.removeProperty("view-transition-name");
+      targetTitle?.style.removeProperty("view-transition-name");
+    };
+    // Browsers can skip an interrupted animation while completing navigation.
+    transition.ready.catch(() => {});
+    transition.finished.then(cleanup, cleanup);
+  }
+
   function openProject(id, updateHistory = true) {
     if (!$( `[data-project-page="${id}"]`)) return;
     window.PortfolioMedia?.close();
@@ -329,10 +339,7 @@
       sourceTitle?.style.setProperty("view-transition-name","project-title");
       targetTitle?.style.setProperty("view-transition-name","project-title");
       const transition = document.startViewTransition(activate);
-      transition.finished.finally(() => {
-        sourceTitle?.style.removeProperty("view-transition-name");
-        targetTitle?.style.removeProperty("view-transition-name");
-      });
+      settleProjectTransition(transition, sourceTitle, targetTitle);
     } else {
       view.hidden = false;
       view.inert = false;
@@ -378,10 +385,7 @@
       sourceTitle?.style.setProperty("view-transition-name","project-title");
       targetTitle?.style.setProperty("view-transition-name","project-title");
       const transition = document.startViewTransition(deactivate);
-      transition.finished.finally(() => {
-        sourceTitle?.style.removeProperty("view-transition-name");
-        targetTitle?.style.removeProperty("view-transition-name");
-      });
+      settleProjectTransition(transition, sourceTitle, targetTitle);
     } else deactivate();
     setTimeout(() => {
       if (state.project) return;
@@ -624,13 +628,14 @@
 
   function renderControlLabs() {
     if (state.project !== "manipulation") return;
-    [window.PortfolioMotion, window.PortfolioTeleop]
+    [window.PortfolioMotion, window.PortfolioTeleop, window.PortfolioContact]
       .forEach((lab) => lab?.render(state.language));
   }
 
   function pauseControlLabs() {
     window.PortfolioMotion?.pause?.();
     window.PortfolioTeleop?.pause?.();
+    window.PortfolioContact?.pause?.();
     $$("#project-manipulation video").forEach((video) => video.pause());
   }
 

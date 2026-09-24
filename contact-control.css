@@ -1,0 +1,63 @@
+/* Lucide icon license: assets/icons/contact-icons-LICENSE.txt */
+.contact-demo {
+  color: #183e31;
+  background: #f5f8f2;
+  border-block: 1px solid #b1c2b5;
+  margin-top: 28px;
+  padding: 22px 24px 16px;
+  min-width: 0;
+  letter-spacing: 0;
+}
+.contact-demo *, .contact-demo *::before, .contact-demo *::after { box-sizing: border-box; }
+.contact-demo .contact-demo-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+.contact-demo .contact-demo-heading h3 { margin: 0; font-size: 21px; line-height: 1.35; letter-spacing: 0; }
+.contact-demo .contact-transport { display: flex; align-items: center; flex: none; gap: 10px; }
+.contact-demo .contact-model-label { margin-left: 8px; font-size: 12px; line-height: 1.4; color: #466151; }
+.contact-demo button.contact-icon { position: relative; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid #a7bbad; border-radius: 0; background: transparent; cursor: pointer; color: #183e31; }
+.contact-demo button.contact-icon::after { content: ""; position: absolute; inset: -5px; }
+.contact-demo button.contact-icon img { display: block; width: 18px; height: 18px; }
+.contact-demo button.contact-icon:hover { background: #d8f263; }
+.contact-demo .contact-demo-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(230px, 1fr); gap: 28px; align-items: center; }
+.contact-demo .contact-visual { min-width: 0; }
+.contact-demo canvas { display: block; width: 100%; }
+.contact-demo .contact-force-scene { height: 275px; }
+.contact-demo .contact-control-scene { height: 110px; }
+.contact-demo .contact-response-chart { height: 200px; }
+.contact-demo .contact-readouts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid #c5d2c8; padding-top: 12px; }
+.contact-demo .contact-readouts span { display: block; font-size: 13px; line-height: 1.4; color: #466151; }
+.contact-demo .contact-readouts output { display: block; margin-top: 4px; font: 600 20px/1.35 var(--mono, monospace); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.contact-demo .contact-settings { min-width: 0; border-left: 1px solid #c5d2c8; padding-left: 28px; }
+.contact-demo .contact-slider { display: block; margin-bottom: 25px; }
+.contact-demo .contact-slider > span { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: 14px; line-height: 1.5; }
+.contact-demo .contact-slider output { font: 12px/1.5 var(--mono, monospace); white-space: nowrap; }
+.contact-demo .contact-slider input { display: block; width: 100%; min-height: 32px; margin: 9px 0 0; accent-color: #446a42; cursor: pointer; }
+.contact-demo .contact-toggle { display: flex; gap: 9px; align-items: center; min-height: 40px; font-size: 14px; cursor: pointer; }
+.contact-demo .contact-toggle input { width: 17px; height: 17px; margin: 0; accent-color: #446a42; }
+.contact-demo .contact-equation { margin: 20px 0 9px; font: 14px/1.8 var(--mono, monospace); overflow-wrap: anywhere; }
+.contact-demo .contact-constants { margin: 0 0 14px; color: #526c5d; font-size: 12px; line-height: 1.7; }
+.contact-demo .contact-description { margin: 12px 0 0; font-size: 15px; line-height: 1.7; }
+.contact-demo .contact-evidence { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid #c5d2c8; color: #526c5d; font-size: 12px; line-height: 1.6; }
+.contact-demo .contact-mode { display: grid; grid-template-columns: 1fr 1fr; max-width: 440px; border: 1px solid #a7bbad; margin-bottom: 20px; }
+.contact-demo .contact-mode button { min-height: 42px; margin: 0; padding: 8px 14px; background: transparent; border: 0; border-radius: 0; color: #183e31; font-family: inherit; font-size: 15px; font-weight: 600; line-height: 1.4; cursor: pointer; }
+.contact-demo .contact-mode button + button { border-left: 1px solid #a7bbad; }
+.contact-demo .contact-mode button[aria-pressed="true"] { background: #d8f263; box-shadow: inset 0 -2px #183e31; }
+.contact-demo .contact-relation { display: grid; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr); align-items: center; gap: 10px; }
+.contact-demo .contact-relation > span { font-size: 15px; font-weight: 600; line-height: 1.4; }
+.contact-demo .contact-relation > span:last-child { text-align: right; }
+.contact-demo .contact-relation small { display: block; margin-bottom: 3px; font-size: 11px; font-weight: 400; color: #526c5d; }
+.contact-demo .contact-relation .contact-relation-arrow { color: #a74433; font-size: 22px; text-align: center; }
+.contact-demo :focus-visible { outline: 2px solid #bc4b38; outline-offset: 4px; }
+@media (max-width: 1000px) {
+  .contact-demo .contact-demo-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .contact-demo .contact-demo-grid { grid-template-columns: minmax(0, 1.4fr) minmax(190px, 1fr); gap: 20px; }
+  .contact-demo .contact-settings { padding-left: 20px; }
+}
+@media (max-width: 700px) {
+  .contact-demo { padding: 18px 14px 14px; }
+  .contact-demo .contact-demo-heading h3 { font-size: 19px; }
+  .contact-demo .contact-demo-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-demo .contact-settings { border-left: 0; padding-left: 0; border-top: 1px solid #c5d2c8; padding-top: 20px; }
+  .contact-demo .contact-slider { margin-bottom: 16px; }
+  .contact-demo .contact-readouts output { font-size: 18px; }
+  .contact-demo .contact-mode { max-width: none; }
+}

@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-09-23T15:09:51.910Z",
-  "fileCount": 185,
-  "totalBytes": 143296202,
+  "generatedAt": "2026-09-24T06:44:59.442Z",
+  "fileCount": 191,
+  "totalBytes": 143324699,
   "files": [
     {
       "path": "index.html",
-      "bytes": 55493,
-      "sha256": "7a6f44a8d20630362ec3948d4262d78d9997b1ac26971d6f374f2af30d4c40a4"
+      "bytes": 55749,
+      "sha256": "971bd820e09b22c21cbfca96c75727f17660a20d6347e2c1f3b6ae5f010e50b2"
     },
     {
       "path": "content-v6.js",
-      "bytes": 59093,
-      "sha256": "82085c3ae4524829919c8296522fcaefd8dc2ebfd0d52aa2fd4ca2ddc3dbe843"
+      "bytes": 59653,
+      "sha256": "d852e92a1c8aa0c6cb22b7448239aae214242b16f816880ab40033188c2aeec5"
     },
     {
       "path": "script-v6.js",
-      "bytes": 49882,
-      "sha256": "8ac1bbe253420fa4d1c7b5e92b97f57eccadaf9a500a162e42451723f033dc15"
+      "bytes": 50123,
+      "sha256": "0626b297bcba7c86653939aff1ed9126db1a9cda7eab36ec3fab6b51e57cedc7"
     },
     {
       "path": "styles-v6.css",
@@ -59,6 +59,16 @@
       "sha256": "8c5b9551e79be700ed8fdd0e585d32fa0b00e0a065e96461d470d07103d71501"
     },
     {
+      "path": "contact-control.js",
+      "bytes": 19935,
+      "sha256": "00666aab2bbcbf72b07fb0c0c971733f30be65ecbc4857cd85f5df81d4793b37"
+    },
+    {
+      "path": "contact-control.css",
+      "bytes": 5422,
+      "sha256": "3fc7c694a10f244b6c403f28977713e651395beeef610b3c9bf1780fdd0957a1"
+    },
+    {
       "path": "media-viewer.js",
       "bytes": 9187,
       "sha256": "7e0bf009e71b4d4f4e89c53697922a9c6269b42e3904d787c670ed3f67a97496"
@@ -70,8 +80,8 @@
     },
     {
       "path": "resume.html",
-      "bytes": 8725,
-      "sha256": "b5accd7552c4e1d046389465d020be64721b4a83b3202e7aa204164409c4e52c"
+      "bytes": 8792,
+      "sha256": "0347f91edce74a708a72f9b9f9d2cb9decab4740b3c482d460deaf9767abd880"
     },
     {
       "path": "resume.css",
@@ -80,8 +90,8 @@
     },
     {
       "path": "resume.js",
-      "bytes": 6429,
-      "sha256": "bf2200ced742f1655773619a906316d4da6676dbd52cbbf5c82873380b68db5b"
+      "bytes": 6474,
+      "sha256": "d427871181f1c075d28996580135db35c00ccd035e4b01492605846437d02b93"
     },
     {
       "path": "assets/data/motion-comparison.json",
@@ -927,6 +937,26 @@
       "path": "assets/fonts/spacegrotesk-OFL.txt",
       "bytes": 4495,
       "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+    },
+    {
+      "path": "assets/icons/contact-play.svg",
+      "bytes": 291,
+      "sha256": "87d9cf16d76f3a6edc5b45769052d999a1e78248823e5834e9ab06dac27a8484"
+    },
+    {
+      "path": "assets/icons/contact-pause.svg",
+      "bytes": 351,
+      "sha256": "8fac4f876c1f13bc80cc4098040ddf992c3655d542e3b521d0c685149a4f9cf8"
+    },
+    {
+      "path": "assets/icons/contact-reset.svg",
+      "bytes": 335,
+      "sha256": "8eefbbe0b8a6f24fd3d031a031324d0f61afd22ec4ebf4758a6140303ce18040"
+    },
+    {
+      "path": "assets/icons/contact-icons-LICENSE.txt",
+      "bytes": 994,
+      "sha256": "af79ee0afde00798a4b0191122aa1dde04a886030793b63a0ec09d66e2bf37f1"
     }
   ]
 }

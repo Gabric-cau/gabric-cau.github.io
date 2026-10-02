@@ -32,13 +32,14 @@
 
   const zh = {
     skip: "跳到正文",
-    metaDescription: "郭阳溢的个人主页。就读于新加坡国立大学 Smart Industries and Digital Transformation 专业，方向为 Robotics and Automation；研究与项目包括 Egocentric、Humanoid、机器人控制与真机实验。",
+    pageTitle: "郭阳溢 Yangyi Guo (Gabric) | 机器人与具身智能",
+    metaDescription: "郭阳溢（Yangyi Guo），也使用 Gabric 这个名字。新加坡国立大学 Smart Industries and Digital Transformation 硕士在读，Robotics and Automation 方向；作品集涵盖机器人运动控制、遥操作、人形机器人部署与 Egocentric 研究。",
     footerTop: "回到顶部 ↑",
     header: { status: "CURRENTLY · NUS ROBOTICS" },
     nav: { work: "项目", path: "路径", tech: "技术", contact: "联系", resume: "求职摘要", menu: "菜单" },
     menu: { label: "项目" },
     hero: {
-      kicker: "ROBOTICS · NUS · SINGAPORE",
+      kicker: "郭阳溢 · Yangyi Guo · Gabric",
       titleText: "你好，我是郭阳溢。",
       title: "<span class=\"title-line title-line--greeting\"><span>你好，</span></span><span class=\"title-line title-line--identity\"><span>我是郭阳溢。</span></span>",
       deck: "我从本科开始就在做机器人，从机械结构、嵌入式和视觉，到后来的机械臂控制、人形机器人和多模态数据。",
@@ -74,6 +75,7 @@
     },
     path: {
       title: "我的路径",
+      profileLink: "中国农业大学 · 郭阳溢人物报道",
       intro: "本科阶段我就开始做机器人，最早完成了一套同时涉及机械、嵌入式和视觉的物流搬运机器人。之后做过视觉部署、机械臂控制和真机实验，2026 年开始接触 Whole‑body VLA 和人形机器人，现在专注于 Egocentric 多模态采集。",
       originKicker: "本科毕业设计 · 真机",
       originCaption: "物流搬运机器人：目标识别、搬运、定点放置与返回",
@@ -334,13 +336,14 @@
 
   const en = {
     skip: "Skip to content",
-    metaDescription: "I'm Yangyi Guo, a master's student in Smart Industries and Digital Transformation at NUS, on the Robotics and Automation track. I build motion-control software, work on humanoid deployment and focus on egocentric multimodal data capture.",
+    pageTitle: "Yangyi Guo 郭阳溢 (Gabric) | Robotics & Embodied AI",
+    metaDescription: "Yangyi Guo (郭阳溢), also known as Gabric. NUS master's student in Smart Industries and Digital Transformation, Robotics and Automation track. Portfolio in robot motion control, teleoperation, humanoid deployment and egocentric research.",
     footerTop: "Back to top ↑",
     header: { status: "CURRENTLY · NUS ROBOTICS" },
     nav: { work: "Projects", path: "Path", tech: "Tech", contact: "Contact", resume: "Resume", menu: "Menu" },
     menu: { label: "PROJECTS" },
     hero: {
-      kicker: "ROBOTICS · NUS · SINGAPORE",
+      kicker: "Yangyi Guo · 郭阳溢 · Gabric",
       titleText: "Hi, I'm Yangyi.",
       title: "<span class=\"title-line title-line--greeting\"><span>Hi,</span></span><span class=\"title-line title-line--identity\"><span>I'm Yangyi.</span></span>",
       deck: "I got into robotics by building a whole robot, from its mechanics and embedded control to its vision. That led me to motion-control software, humanoids and human-motion data.",
@@ -376,6 +379,7 @@
     },
     path: {
       title: "How I got here",
+      profileLink: "China Agricultural University · 郭阳溢 profile",
       intro: "My undergraduate logistics robot got me hooked on building across disciplines. I connected mechanics, embedded control and vision, then moved into field deployment, robot-arm control and hardware experiments. Whole-body VLA and humanoid work followed in 2026. At NUS, those interests now meet in egocentric multimodal data capture.",
       originKicker: "UNDERGRADUATE THESIS · REAL HARDWARE",
       originCaption: "Logistics robot: target detection, transport, fixed-point placement and return",

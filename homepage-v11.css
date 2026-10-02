@@ -83,6 +83,17 @@ body:not(.project-open) .language-toggle { font-size: 11px; }
   font: 600 10px/1.4 var(--mono);
 }
 
+.home-view .path-profile-link {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.home-view .path-profile-link a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
 .home-view .hero h1,
 html[data-language="en"] .home-view .hero h1 {
   width: auto;

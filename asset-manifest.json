@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-09-24T06:44:59.442Z",
-  "fileCount": 191,
-  "totalBytes": 143324699,
+  "generatedAt": "2026-10-02T07:59:36.327Z",
+  "fileCount": 193,
+  "totalBytes": 143328463,
   "files": [
     {
       "path": "index.html",
-      "bytes": 55749,
-      "sha256": "971bd820e09b22c21cbfca96c75727f17660a20d6347e2c1f3b6ae5f010e50b2"
+      "bytes": 58648,
+      "sha256": "d2021a42d05a1fe8b050c470400fc2c1fcbc588e12ea85247358932aa72434d6"
     },
     {
       "path": "content-v6.js",
-      "bytes": 59653,
-      "sha256": "d852e92a1c8aa0c6cb22b7448239aae214242b16f816880ab40033188c2aeec5"
+      "bytes": 59997,
+      "sha256": "bead52cf6a55eaef5e06443208e21b319f4856f604bc3de5c85e98be8291b808"
     },
     {
       "path": "script-v6.js",
-      "bytes": 50123,
-      "sha256": "0626b297bcba7c86653939aff1ed9126db1a9cda7eab36ec3fab6b51e57cedc7"
+      "bytes": 50035,
+      "sha256": "11f42f8b76485278cf078bf2e3f90d94e333588bcf207d6d017b3269b6e05bde"
     },
     {
       "path": "styles-v6.css",
@@ -25,8 +25,8 @@
     },
     {
       "path": "homepage-v11.css",
-      "bytes": 59177,
-      "sha256": "a485c5205e47eafedd30bc77a4fbb96549b6120084247c29f095647e1e1f11e5"
+      "bytes": 59394,
+      "sha256": "092e706b7d24d937ba00d6ec0a589b7362ce0f84c08dd3f39afcc28d92c502d5"
     },
     {
       "path": "fonts.css",
@@ -37,6 +37,16 @@
       "path": "_headers",
       "bytes": 417,
       "sha256": "8f96b7183436107bfef7081bfa1673ca87f801046559f3c9d500ab5248c494d4"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 74,
+      "sha256": "ecd55bebb9c615f301f192428aa3470d69d3714d328d7643f55807639ac1c8b5"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 245,
+      "sha256": "ab893457d7987e0790108b6e063076b0d5e22a9e859155b51d2ae6f217bd163e"
     },
     {
       "path": "control-motion.js",
@@ -80,8 +90,8 @@
     },
     {
       "path": "resume.html",
-      "bytes": 8792,
-      "sha256": "0347f91edce74a708a72f9b9f9d2cb9decab4740b3c482d460deaf9767abd880"
+      "bytes": 8865,
+      "sha256": "c9c364fef5fc12f0a5448c8f6bb08e7cfe3751c6e6c1e5d51667d1a2bb020076"
     },
     {
       "path": "resume.css",

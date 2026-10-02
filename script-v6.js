@@ -69,7 +69,7 @@
     $("#menu-panel")?.setAttribute("aria-label", state.language === "zh" ? "项目导航" : "Project navigation");
     $("#language-toggle")?.setAttribute("aria-label", state.language === "zh" ? "Switch to English" : "切换到中文");
     $("#language-toggle").textContent = state.language === "zh" ? "EN" : "中文";
-    document.title = state.language === "zh" ? "郭阳溢｜机器人与具身智能" : "Yangyi Guo | Robotics & Embodied AI";
+    document.title = copy().pageTitle;
     updateVideoControl($("#hero-video"), $("#hero-play"));
     updateVideoControl($("#a3u-video"), $("#a3u-play"));
     updateVideoControl($("#mimiclite-g1-video"), $("#mimiclite-g1-play"));
